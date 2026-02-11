@@ -97,7 +97,7 @@ async function fetchAllNftsForContract(alchemy: Alchemy, contractAddress: string
       omitMetadata: false
     });
 
-    allNfts.push(...(response.nfts as Array<Record<string, unknown>>));
+    allNfts.push(...response.nfts);
     pageKey = response.pageKey;
     pageCount += 1;
   } while (pageKey && pageCount < MAX_PAGES_PER_CONTRACT);
