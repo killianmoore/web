@@ -87,7 +87,7 @@ async function fetchImageFromTokenUri(tokenUriRaw?: string | null): Promise<stri
 }
 
 async function fetchAllNftsForContract(alchemy: Alchemy, contractAddress: string) {
-  const allNfts: Array<Record<string, unknown>> = [];
+  const allNfts: unknown[] = [];
   let pageKey: string | undefined;
   let pageCount = 0;
 
@@ -106,15 +106,16 @@ async function fetchAllNftsForContract(alchemy: Alchemy, contractAddress: string
 }
 
 async function fetchAllNftsForContractWithTimeout(alchemy: Alchemy, contractAddress: string) {
-  return Promise.race<Array<Record<string, unknown>>>([
+  return Promise.race<unknown[]>([
     fetchAllNftsForContract(alchemy, contractAddress),
-    new Promise<Array<Record<string, unknown>>>((resolve) => {
+    new Promise<unknown[]>((resolve) => {
       setTimeout(() => resolve([]), CONTRACT_CALL_TIMEOUT_MS);
     })
   ]);
 }
 
-async function normalizeNft(nft: Record<string, unknown>): Promise<NftImageItem | null> {
+async function normalizeNft(nftInput: unknown): Promise<NftImageItem | null> {
+  const nft = (nftInput ?? {}) as Record<string, unknown>;
   const contract = normalizeContract(
     pickFirstString([
       (nft.contract as { address?: string } | undefined)?.address,
@@ -189,7 +190,7 @@ async function getNftsForContractsUncached(addresses: string[]): Promise<NftImag
   );
 
   const allNfts = results
-    .filter((result): result is PromiseFulfilledResult<Array<Record<string, unknown>>> => result.status === "fulfilled")
+    .filter((result): result is PromiseFulfilledResult<unknown[]> => result.status === "fulfilled")
     .flatMap((result) => result.value);
 
   const normalized = (await Promise.all(allNfts.map((nft) => normalizeNft(nft)))).filter(
@@ -208,5 +209,5 @@ async function getNftsForContractsUncached(addresses: string[]): Promise<NftImag
     }
   }
 
-  return [...unique.values()];
+  return Array.from(unique.values());
 }

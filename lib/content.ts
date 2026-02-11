@@ -321,7 +321,7 @@ const curatedPhotoOrder = [
 export async function getAllPhotos(): Promise<Photo[]> {
   const series = await getPhotoSeries();
 
-  const fromSeriesContent = (
+  const fromSeriesContent: Photo[] = (
     await Promise.all(
       series.flatMap((group) =>
         group.images.map(async (image) => {
@@ -341,44 +341,51 @@ export async function getAllPhotos(): Promise<Photo[]> {
   ).filter(isDefined);
 
   const imagesRoot = path.join(process.cwd(), "public", "images");
-  const entries = await fs.readdir(imagesRoot, { withFileTypes: true });
-  const seriesDirs = entries.filter((entry) => entry.isDirectory() && entry.name.startsWith("series-"));
   const supportedExts = new Set([".jpg", ".jpeg", ".png", ".webp", ".avif", ".svg", ".tif", ".tiff"]);
+  let discoveredPhotos: Photo[] = [];
 
-  const discoveredLists = await Promise.all(
-    seriesDirs.map(async (dir) => {
-      const dirPath = path.join(imagesRoot, dir.name);
-      const files = await listFilesRecursive(dirPath);
-      return files
-        .filter((absolute) => supportedExts.has(path.extname(absolute).toLowerCase()))
-        .map((absolute) => {
-          const publicUrl = toPublicUrl(absolute);
-          return {
-            _publicUrl: publicUrl,
-            alt: makeAltFromFilename(publicUrl)
-          };
-        });
-    })
-  );
+  try {
+    const entries = await fs.readdir(imagesRoot, { withFileTypes: true });
+    const seriesDirs = entries.filter((entry) => entry.isDirectory() && entry.name.startsWith("series-"));
 
-  const discoveredPhotos = (
-    await Promise.all(
-      discoveredLists.flat().map(async (photo) => {
-        const resolved = await resolveRenderableSource(photo._publicUrl);
-        if (!resolved) {
-          return null;
-        }
-        const meta = await getImageMeta(resolved.filePublicUrl);
-        return {
-          src: resolved.src,
-          alt: photo.alt,
-          ...meta
-        } satisfies Photo;
+    const discoveredLists = await Promise.all(
+      seriesDirs.map(async (dir) => {
+        const dirPath = path.join(imagesRoot, dir.name);
+        const files = await listFilesRecursive(dirPath);
+        return files
+          .filter((absolute) => supportedExts.has(path.extname(absolute).toLowerCase()))
+          .map((absolute) => {
+            const publicUrl = toPublicUrl(absolute);
+            return {
+              _publicUrl: publicUrl,
+              alt: makeAltFromFilename(publicUrl)
+            };
+          });
       })
-    )
-  ).filter(isDefined);
+    );
 
-  const allPhotos = [...fromSeriesContent];
+    discoveredPhotos = (
+      await Promise.all(
+        discoveredLists.flat().map(async (photo) => {
+          const resolved = await resolveRenderableSource(photo._publicUrl);
+          if (!resolved) {
+            return null;
+          }
+          const meta = await getImageMeta(resolved.filePublicUrl);
+          return {
+            src: resolved.src,
+            alt: photo.alt,
+            ...meta
+          } satisfies Photo;
+        })
+      )
+    ).filter(isDefined);
+  } catch {
+    // If /public/images is absent in a deploy/build environment, continue with series content only.
+    discoveredPhotos = [];
+  }
+
+  const allPhotos: Photo[] = [...fromSeriesContent];
   const seen = new Set(fromSeriesContent.map((photo) => photo.src));
   for (const photo of discoveredPhotos) {
     if (!seen.has(photo.src)) {
