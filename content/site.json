@@ -1,0 +1,25 @@
+{
+  "name": "Killian Moore",
+  "intro": "Photographer and visual artist documenting silence, structure, and the edges of light.",
+  "bio": [
+    "Killian Moore is a photographer working between still architecture and transient urban gestures.",
+    "His work blends editorial discipline with fine-art pacing, focusing on spaces where mood arrives before narrative.",
+    "Alongside print series, he releases selected works as NFTs to preserve provenance and support digital-native collecting."
+  ],
+  "statement": "I photograph intervals. The meaningful frame is often the one between events, where place and memory overlap. My NFT editions are extensions of the same practice: independent artifacts with transparent ownership and long-term continuity.",
+  "socials": [
+    {
+      "label": "Instagram",
+      "url": "https://instagram.com/killianmoore"
+    },
+    {
+      "label": "X",
+      "url": "https://x.com/killianmoore"
+    },
+    {
+      "label": "Foundation",
+      "url": "https://foundation.app/@killianmoore"
+    }
+  ],
+  "email": "hello@killianmoore.studio"
+}

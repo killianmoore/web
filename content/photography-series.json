@@ -1,0 +1,129 @@
+[
+  {
+    "slug": "neon-city",
+    "title": "Neon City",
+    "year": 2025,
+    "cover": "/images/series-neon-city/cover.jpg",
+    "description": "A study of color and isolation inside midnight architecture.",
+    "images": [
+      {
+        "src": "/images/series-neon-city/n01.jpg",
+        "alt": "Neon City photograph 01",
+        "caption": "Neon City 01"
+      },
+      {
+        "src": "/images/series-neon-city/n02.jpg",
+        "alt": "Neon City photograph 02",
+        "caption": "Neon City 02"
+      },
+      {
+        "src": "/images/series-neon-city/n03.jpg",
+        "alt": "Neon City photograph 03",
+        "caption": "Neon City 03"
+      },
+      {
+        "src": "/images/series-neon-city/n04.jpg",
+        "alt": "Neon City photograph 04",
+        "caption": "Neon City 04"
+      },
+      {
+        "src": "/images/series-neon-city/n05.jpg",
+        "alt": "Neon City photograph 05",
+        "caption": "Neon City 05"
+      },
+      {
+        "src": "/images/series-neon-city/n06.jpg",
+        "alt": "Neon City photograph 06",
+        "caption": "Neon City 06"
+      },
+      {
+        "src": "/images/series-neon-city/n07.jpg",
+        "alt": "Neon City photograph 07",
+        "caption": "Neon City 07"
+      },
+      {
+        "src": "/images/series-neon-city/n08.jpg",
+        "alt": "Neon City photograph 08",
+        "caption": "Neon City 08"
+      },
+      {
+        "src": "/images/series-neon-city/n09.jpg",
+        "alt": "Neon City photograph 09",
+        "caption": "Neon City 09"
+      },
+      {
+        "src": "/images/series-neon-city/n10.jpg",
+        "alt": "Neon City photograph 10",
+        "caption": "Neon City 10"
+      },
+      {
+        "src": "/images/series-neon-city/n11.jpg",
+        "alt": "Neon City photograph 11",
+        "caption": "Neon City 11"
+      },
+      {
+        "src": "/images/series-neon-city/n12.jpg",
+        "alt": "Neon City photograph 12",
+        "caption": "Neon City 12"
+      },
+      {
+        "src": "/images/series-neon-city/n13.jpg",
+        "alt": "Neon City photograph 13",
+        "caption": "Neon City 13"
+      },
+      {
+        "src": "/images/series-neon-city/n14.jpg",
+        "alt": "Neon City photograph 14",
+        "caption": "Neon City 14"
+      }
+    ]
+  },
+  {
+    "slug": "desert-quiet",
+    "title": "Desert Quiet",
+    "year": 2024,
+    "cover": "/images/series-desert-quiet/cover.svg",
+    "description": "Long light, patient wind, and objects reduced to their silhouette.",
+    "images": [
+      {
+        "src": "/images/series-desert-quiet/01.svg",
+        "alt": "Early morning dunes under soft amber light",
+        "caption": "Before heat"
+      },
+      {
+        "src": "/images/series-desert-quiet/02.svg",
+        "alt": "Solitary road line disappearing into sand haze",
+        "caption": "Noon line",
+        "exif": {
+          "camera": "Sony A7R V",
+          "lens": "50mm f/1.2",
+          "iso": "200",
+          "shutter": "1/1600s",
+          "aperture": "f/4"
+        }
+      },
+      {
+        "src": "/images/series-desert-quiet/03.svg",
+        "alt": "Shadow of a cactus on a stucco wall",
+        "caption": "Pointer"
+      },
+      {
+        "src": "/images/series-desert-quiet/04.svg",
+        "alt": "Rock formation and cloud break at dusk",
+        "caption": "Burn afterglow"
+      },
+      {
+        "src": "/images/series-desert-quiet/05.svg",
+        "alt": "Night sky over dry salt flat with tiny horizon lights",
+        "caption": "Static stars",
+        "exif": {
+          "camera": "Sony A7R V",
+          "lens": "24mm f/1.4",
+          "iso": "3200",
+          "shutter": "15s",
+          "aperture": "f/1.8"
+        }
+      }
+    ]
+  }
+]

@@ -1,0 +1,79 @@
+[
+  {
+    "slug": "light-ledger",
+    "title": "Light Ledger",
+    "chain": "Ethereum",
+    "contractAddress": "0x0000000000000000000000000000000000000000",
+    "description": "A generative extension of long-exposure studies.",
+    "cover": "/images/nfts/light-ledger-cover.svg",
+    "marketplaces": [
+      {
+        "name": "OpenSea",
+        "url": "https://opensea.io/collection/placeholder"
+      },
+      {
+        "name": "Reservoir",
+        "url": "https://reservoir.tools/collection/placeholder"
+      }
+    ],
+    "items": [
+      {
+        "name": "Ledger #001",
+        "tokenId": "1",
+        "image": "/images/nfts/light-ledger-001.svg",
+        "marketplaces": [
+          {
+            "name": "OpenSea",
+            "url": "https://opensea.io/assets/ethereum/0x0000000000000000000000000000000000000000/1"
+          }
+        ]
+      },
+      {
+        "name": "Ledger #002",
+        "tokenId": "2",
+        "image": "/images/nfts/light-ledger-002.svg",
+        "marketplaces": [
+          {
+            "name": "Reservoir",
+            "url": "https://reservoir.tools/tokens/ethereum/0x0000000000000000000000000000000000000000:2"
+          }
+        ]
+      }
+    ],
+    "integration": {
+      "providerAgnostic": true,
+      "adapters": ["opensea", "reservoir", "alchemy"]
+    }
+  },
+  {
+    "slug": "silent-proof",
+    "title": "Silent Proof",
+    "chain": "Base",
+    "contractAddress": "0x1111111111111111111111111111111111111111",
+    "description": "Monochrome fragments minted as one-of-one editions.",
+    "cover": "/images/nfts/silent-proof-cover.svg",
+    "marketplaces": [
+      {
+        "name": "OpenSea",
+        "url": "https://opensea.io/collection/placeholder-base"
+      }
+    ],
+    "items": [
+      {
+        "name": "Proof #101",
+        "tokenId": "101",
+        "image": "/images/nfts/silent-proof-101.svg",
+        "marketplaces": [
+          {
+            "name": "OpenSea",
+            "url": "https://opensea.io/assets/base/0x1111111111111111111111111111111111111111/101"
+          }
+        ]
+      }
+    ],
+    "integration": {
+      "providerAgnostic": true,
+      "adapters": ["opensea", "reservoir", "alchemy"]
+    }
+  }
+]
