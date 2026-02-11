@@ -115,7 +115,7 @@ async function fetchAllNftsForContractWithTimeout(alchemy: Alchemy, contractAddr
 }
 
 async function normalizeNft(nftInput: unknown): Promise<NftImageItem | null> {
-  const nft = (nftInput ?? {}) as Record<string, unknown>;
+  const nft = (nftInput ?? {}) as { [key: string]: unknown };
   const contract = normalizeContract(
     pickFirstString([
       (nft.contract as { address?: string } | undefined)?.address,
