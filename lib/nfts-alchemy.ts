@@ -15,6 +15,21 @@ const CONTRACT_CALL_TIMEOUT_MS = 8_000;
 const EXCLUDED_TOKENS = new Set(["0x1d0a7c9db496ae18fc36f57b6be976de0a2230f6:1"]);
 const NETWORKS = [Network.ETH_MAINNET, Network.BASE_MAINNET] as const;
 
+function readAlchemyApiKey(): string {
+  const raw = process.env.ALCHEMY_API_KEY ?? process.env.NEXT_PUBLIC_ALCHEMY_API_KEY ?? "";
+  const trimmed = raw.trim();
+
+  // Handle accidental quoted values in env providers.
+  if (
+    (trimmed.startsWith('"') && trimmed.endsWith('"')) ||
+    (trimmed.startsWith("'") && trimmed.endsWith("'"))
+  ) {
+    return trimmed.slice(1, -1).trim();
+  }
+
+  return trimmed;
+}
+
 function normalizeContract(address: string): string {
   return address.toLowerCase();
 }
@@ -169,8 +184,9 @@ export async function getNftsForContracts(addresses: string[]): Promise<NftImage
 }
 
 async function getNftsForContractsUncached(addresses: string[]): Promise<NftImageItem[]> {
-  const apiKey = process.env.ALCHEMY_API_KEY;
+  const apiKey = readAlchemyApiKey();
   if (!apiKey) {
+    console.warn("ALCHEMY_API_KEY is missing. NFT feed will be empty.");
     return [];
   }
 

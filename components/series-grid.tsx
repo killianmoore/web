@@ -53,7 +53,7 @@ export function SeriesGrid({ photos }: { photos: Photo[] }) {
 
   return (
     <>
-      <div className="grid grid-cols-1 gap-x-10 gap-y-14 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-x-12 gap-y-20 md:grid-cols-2 lg:grid-cols-3">
         {photos.map((photo, index) => (
           <motion.article
             initial={{ opacity: 0 }}
