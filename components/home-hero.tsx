@@ -33,7 +33,7 @@ export function HomeHero() {
       <div className="absolute inset-0 bg-black/20" />
       <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.54)_0%,rgba(0,0,0,0.08)_33%,rgba(0,0,0,0.08)_67%,rgba(0,0,0,0.44)_100%)]" />
 
-      <div className="absolute left-1/2 top-[54%] w-[min(76vw,430px)] -translate-x-1/2 -translate-y-1/2 sm:left-[63.5%] sm:top-[52%] sm:w-[min(37.9vw,488px)] sm:-translate-x-[51.5%]">
+      <div className="absolute left-1/2 top-[76%] w-[min(76vw,430px)] -translate-x-1/2 -translate-y-1/2 sm:left-[63.5%] sm:top-[52%] sm:w-[min(37.9vw,488px)] sm:-translate-x-[51.5%]">
         <motion.div
           animate={{ opacity: 1 }}
           initial={{ opacity: 0 }}
