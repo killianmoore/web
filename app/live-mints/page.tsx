@@ -33,7 +33,7 @@ export default function LiveMintsPage() {
             <div className="mt-6 space-y-5 text-[15px] leading-[1.8] text-white/78 md:text-[16px]">
               <p>
                 This piece reinterprets a timeless symbol of freedom through the lens of collective artistic agency.
-                Standing not with a torch but with a raised fist and the inscription "IN BSY WE TRUST," this work
+                Standing not with a torch but with a raised fist and the inscription &quot;IN BSY WE TRUST,&quot; this work
                 represents the power of community to redefine tradition and amplify unheard voices.
               </p>
 
