@@ -1,21 +1,60 @@
 import Image from "next/image";
 import { NftGallery } from "@/components/nft-gallery";
 import { getNFTs } from "@/lib/alchemy";
+import marketLinkRulesRaw from "@/content/nft-market-links.json";
 
 export const dynamic = "force-dynamic";
+
+type MarketLinkRule = {
+  title?: string;
+  contract?: string;
+  tokenId?: string;
+  url: string;
+};
+
+const marketLinkRules = marketLinkRulesRaw as MarketLinkRule[];
+
+function normalizeValue(value: string): string {
+  return value.trim().toLowerCase();
+}
+
+function resolveMarketUrl(nft: { name: string; contract: string; tokenId: string }): string {
+  const matchedRule = marketLinkRules.find((rule) => {
+    if (!rule.url || !rule.url.trim()) {
+      return false;
+    }
+
+    if (rule.title && normalizeValue(rule.title) !== normalizeValue(nft.name)) {
+      return false;
+    }
+
+    if (rule.contract && normalizeValue(rule.contract) !== normalizeValue(nft.contract)) {
+      return false;
+    }
+
+    if (rule.tokenId && normalizeValue(rule.tokenId) !== normalizeValue(nft.tokenId)) {
+      return false;
+    }
+
+    return true;
+  });
+
+  if (matchedRule?.url) {
+    return matchedRule.url.trim();
+  }
+
+  return `https://opensea.io/assets/ethereum/${nft.contract}/${nft.tokenId}`;
+}
 
 export default async function NFTsPage() {
   const nfts = await getNFTs();
   const galleryItems = nfts.map((nft) => {
-    const isNucleus = nft.name.trim().toLowerCase() === "nucleus";
-    const marketUrl = isNucleus ? `https://opensea.io/assets/ethereum/${nft.contract}/${nft.tokenId}` : undefined;
-
     return {
       contract: nft.contract,
       tokenId: nft.tokenId,
       name: nft.name,
       imageUrl: nft.image,
-      marketUrl
+      marketUrl: resolveMarketUrl(nft)
     };
   });
 
