@@ -6,8 +6,10 @@ node_modules
 # Exclude large raw photo sources
 public/series-neon-city/**
 public/images/series-neon-city/**
+!public/images/series-neon-city/_web/
 !public/images/series-neon-city/_web/**
 public/images/hero/**
+!public/images/hero/_web/
 !public/images/hero/_web/**
 
 # Exclude heavyweight source formats
