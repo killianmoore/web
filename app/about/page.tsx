@@ -8,65 +8,76 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <main className="min-h-screen bg-black text-white">
-      <div className="max-w-[900px] mx-auto px-6 md:px-12">
-        <div className="pt-28 md:pt-36 pb-10 md:pb-14 text-center">
-          <h1 className="text-[11px] md:text-xs uppercase tracking-[0.55em] text-white/55 font-light">About</h1>
+      <div className="mx-auto w-full max-w-3xl px-6 pb-24 pt-24 sm:pt-28">
+        <div className="mb-12 text-center sm:mb-14">
+          <div className="text-[11px] tracking-[0.35em] text-white/45">ABOUT</div>
         </div>
 
-        <section className="pb-14 md:pb-16">
-          <h2 className="text-[10px] md:text-[11px] uppercase tracking-[0.28em] text-white/40 leading-[1.2]">Bio</h2>
+        <section className="mb-14 sm:mb-16">
+          <div className="mb-4 text-[10px] tracking-[0.35em] text-white/35">BIO</div>
 
-          <div className="mt-6 space-y-6 text-white/78 leading-relaxed text-[15px] md:text-[16px]">
+          <div className="space-y-5 text-[15px] leading-[1.8] text-white/85 sm:text-[14px] sm:leading-relaxed">
             <p>
-              Killian Moore is a visual artist drawn to silence, scale, and the spaces where the human presence feels
-              small but not insignificant.
+              Killian Moore is a visual artist drawn to silence, scale, and the
+              feeling of standing at the edge of something larger than language.
             </p>
+
             <p>
-              From remote landscapes and night skies to aerial vantage points far above the city, his work explores
-              perspective - how distance reshapes what we think we know. Whether grounded in stillness or suspended in
-              motion, his images invite viewers to slow down, step away from the noise, and enter something quieter and
-              more expansive.
+              His work moves between remote landscapes, night skies, and aerial
+              vantage points above New York City, where his office is quite
+              literally a helicopter doorframe over the metropolis. Across these
+              environments, he returns to a single question: what changes in us
+              when distance reshapes what we think we know.
+            </p>
+
+            <p>
+              Through stillness, patience, and light, his images invite viewers
+              to leave their current place behind and drift toward the dreams
+              that have been waiting for them.
             </p>
           </div>
         </section>
 
-        <section className="pb-28 md:pb-36">
-          <h2 className="text-[10px] md:text-[11px] uppercase tracking-[0.28em] text-white/40 leading-[1.2]">
-            Artist Statement
-          </h2>
+        <section className="mb-14 sm:mb-16">
+          <div className="mb-4 text-[10px] tracking-[0.35em] text-white/35">ARTIST STATEMENT</div>
 
-          <div className="mt-6 space-y-6 text-white/78 leading-relaxed text-[15px] md:text-[16px]">
-            <p>I&apos;m drawn to places where sound falls away and scale takes over.</p>
-
+          <div className="space-y-5 text-[15px] leading-[1.8] text-white/85 sm:text-[14px] sm:leading-relaxed">
             <p>
-              Much of my work happens in the quiet - in wide landscapes, under night skies, and sometimes far above
-              the ground, where perspective shifts and the familiar becomes abstract.
-            </p>
-
-            <p>Photographing is a meditative process for me. It asks for stillness and patience, even when suspended in motion.</p>
-
-            <p>
-              I don&apos;t approach these places to document them. I approach them to feel them - and to translate that
-              feeling into something visible.
+              I make photographs for people who are searching. Not for answers,
+              but for a feeling that life can be wider, quieter, and more
+              luminous than the day in front of them.
             </p>
 
             <p>
-              Vast horizons and distant stars aren&apos;t subjects. They&apos;re thresholds. So are cities seen from a
-              distance.
+              Sometimes I work in vast landscapes and open horizons. Sometimes I
+              work under night skies, where time feels suspended and the world
+              becomes tender. And sometimes I work far above the ground, hanging
+              out of a helicopter over New York City, where the familiar turns
+              into pattern and the city becomes a living map.
             </p>
 
             <p>
-              If the work succeeds, it carries the viewer somewhere else - away from the noise of the present and into
-              something slower, quieter, and more expansive.
+              Photography is meditative for me. It asks for stillness and
+              attention. I am not trying to document a place as much as I am
+              trying to translate what it feels like to be there.
             </p>
 
-            <p>Silence and scale are the threads running through it all. Light is what holds it together.</p>
-          </div>
+            <p>
+              My hope is simple: that the image becomes a doorway. That someone
+              can step through it for a moment, leave their current world, and
+              arrive closer to the one they have been dreaming of.
+            </p>
 
-          <div className="mt-14 md:mt-16 text-center">
-            <p className="text-[10px] uppercase tracking-[0.22em] text-white/25">Killian Moore</p>
+            <p className="text-white/70">
+              Silence and scale run through everything I make. Light is what
+              holds it together.
+            </p>
           </div>
         </section>
+
+        <div className="pt-8 text-center sm:pt-10">
+          <div className="text-[10px] tracking-[0.4em] text-white/25">KILLIAN MOORE</div>
+        </div>
       </div>
     </main>
   );
