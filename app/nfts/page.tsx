@@ -2,6 +2,8 @@ import Image from "next/image";
 import { NftGallery } from "@/components/nft-gallery";
 import { getNFTs } from "@/lib/alchemy";
 
+export const dynamic = "force-dynamic";
+
 export default async function NFTsPage() {
   const nfts = await getNFTs();
   const galleryItems = nfts.map((nft) => ({
