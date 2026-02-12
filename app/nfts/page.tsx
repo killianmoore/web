@@ -7,7 +7,7 @@ export const dynamic = "force-dynamic";
 export default async function NFTsPage() {
   const nfts = await getNFTs();
   const galleryItems = nfts.map((nft, index) => {
-    const marketUrl = index === 0 ? `https://opensea.io/assets/ethereum/${nft.contract}/${nft.tokenId}` : undefined;
+    const marketUrl = index === 1 ? `https://opensea.io/assets/ethereum/${nft.contract}/${nft.tokenId}` : undefined;
 
     return {
       contract: nft.contract,
