@@ -23,8 +23,8 @@ export default async function NFTsPage() {
       <section className="pb-16 pt-24 text-center">
         <h1 className="text-[11px] font-light uppercase tracking-[0.55em] text-white/55 md:text-xs">Works On-Chain</h1>
         <p className="mt-6 text-xs uppercase tracking-[0.3em] text-white/30">1/1s and Editions</p>
-        <p className="mb-16 mt-6 text-center text-sm tracking-widest text-white/60">
-          Selected works released as digital originals.
+        <p className="mb-16 mt-6 text-center text-xs uppercase tracking-[0.3em] text-white/50">
+          Selected works released as digital originals
         </p>
       </section>
 
