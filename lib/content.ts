@@ -279,7 +279,9 @@ export async function getPhotoSeries(): Promise<PhotoSeries[]> {
       const filteredImages = (
         await Promise.all(
           series.images.map(async (image) => {
-            if (await existsInPublic(image.src)) {
+            // Allow entries when a renderable derivative exists (e.g. /_web/*.jpg)
+            // even if the original source file is excluded from deploy artifacts.
+            if (await resolveRenderableSource(image.src)) {
               return image;
             }
             return null;

@@ -15,6 +15,7 @@ const MAX_TOTAL_ITEMS = 96;
 const TOKEN_URI_FETCH_TIMEOUT_MS = 5_000;
 const CONTRACT_CALL_TIMEOUT_MS = 8_000;
 const EXCLUDED_TOKENS = new Set(["0x1d0a7c9db496ae18fc36f57b6be976de0a2230f6:1"]);
+const NETWORKS = [Network.ETH_MAINNET, Network.BASE_MAINNET] as const;
 
 function normalizeContract(address: string): string {
   return address.toLowerCase();
@@ -180,18 +181,24 @@ async function getNftsForContractsUncached(addresses: string[]): Promise<NftImag
     return [];
   }
 
-  const alchemy = new Alchemy({
-    apiKey,
-    network: Network.ETH_MAINNET
-  });
+  const networkResults = await Promise.all(
+    NETWORKS.map(async (network) => {
+      const alchemy = new Alchemy({
+        apiKey,
+        network
+      });
 
-  const results = await Promise.allSettled(
-    addresses.map((address) => fetchAllNftsForContractWithTimeout(alchemy, address))
+      const results = await Promise.allSettled(
+        addresses.map((address) => fetchAllNftsForContractWithTimeout(alchemy, address))
+      );
+
+      return results
+        .filter((result): result is PromiseFulfilledResult<unknown[]> => result.status === "fulfilled")
+        .flatMap((result) => result.value);
+    })
   );
 
-  const allNfts = results
-    .filter((result): result is PromiseFulfilledResult<unknown[]> => result.status === "fulfilled")
-    .flatMap((result) => result.value);
+  const allNfts = networkResults.flat();
 
   const normalized = (await Promise.all(allNfts.map((nft) => normalizeNft(nft)))).filter(
     (item): item is NftImageItem => Boolean(item)
