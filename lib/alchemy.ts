@@ -1,4 +1,5 @@
 import { nftContracts } from "@/content/nftContracts";
+import { getNftCollections } from "@/lib/content";
 import { getNftsForContracts } from "@/lib/nfts-alchemy";
 
 export type AlchemyNftItem = {
@@ -8,6 +9,18 @@ export type AlchemyNftItem = {
   image: string;
 };
 
+async function getFallbackNFTs(): Promise<AlchemyNftItem[]> {
+  const collections = await getNftCollections();
+  return collections.flatMap((collection) =>
+    collection.items.map((item) => ({
+      contract: collection.contractAddress,
+      tokenId: item.tokenId,
+      name: item.name,
+      image: item.image
+    }))
+  );
+}
+
 export async function getNFTs(): Promise<AlchemyNftItem[]> {
   const items = await Promise.race([
     getNftsForContracts([...nftContracts]),
@@ -16,10 +29,14 @@ export async function getNFTs(): Promise<AlchemyNftItem[]> {
     })
   ]);
 
-  return items.map((item) => ({
-    contract: item.contract,
-    tokenId: item.tokenId,
-    name: item.name,
-    image: item.imageUrl
-  }));
+  if (items.length > 0) {
+    return items.map((item) => ({
+      contract: item.contract,
+      tokenId: item.tokenId,
+      name: item.name,
+      image: item.imageUrl
+    }));
+  }
+
+  return getFallbackNFTs();
 }
