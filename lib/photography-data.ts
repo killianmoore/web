@@ -43,10 +43,22 @@ export async function getPhotoSeriesBySlug(slug: string): Promise<PhotoSeries | 
 }
 
 export async function getAllPhotos(): Promise<Photo[]> {
-  return seriesData.flatMap((series) =>
+  const all = seriesData.flatMap((series) =>
     series.images.map((image) => ({
       src: image.src,
       alt: image.alt
     }))
   );
+
+  if (all.length <= 6) {
+    return all;
+  }
+
+  const shuffled = [...all];
+  for (let i = shuffled.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+
+  return shuffled.slice(0, 6);
 }
