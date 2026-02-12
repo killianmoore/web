@@ -5,7 +5,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = "https://killianmoore.studio";
   const series = await getPhotoSeries();
 
-  const staticRoutes = ["", "/photography", "/nfts", "/about", "/contact"].map((route) => ({
+  const staticRoutes = ["", "/photography", "/nfts", "/live-mints", "/about", "/contact"].map((route) => ({
     url: `${base}${route}`,
     lastModified: new Date()
   }));

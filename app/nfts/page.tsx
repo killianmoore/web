@@ -71,14 +71,6 @@ export default async function NFTsPage() {
         <p className="mb-16 mt-6 text-center text-xs uppercase tracking-[0.3em] text-white/50">
           Selected works released as digital originals
         </p>
-        <a
-          className="inline-flex items-center justify-center border border-white/40 px-6 py-2 text-[11px] uppercase tracking-[0.25em] text-white/85 transition-colors duration-300 hover:border-white/70 hover:text-white"
-          href="https://www.transient.xyz/mint/in-bsy-we-trust"
-          rel="noreferrer"
-          target="_blank"
-        >
-          Mint Live
-        </a>
       </section>
 
       {galleryItems.length === 0 ? (
