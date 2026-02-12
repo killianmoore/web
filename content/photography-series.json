@@ -3,38 +3,38 @@
     "slug": "neon-city",
     "title": "Neon City",
     "year": 2025,
-    "cover": "/images/series-neon-city/Dark Waves (1 of 1) 2.jpg",
+    "cover": "/images/series-neon-city/_web/Dark Waves (1 of 1) 2.jpg",
     "description": "A study of color and isolation inside midnight architecture.",
     "images": [
       {
-        "src": "/images/series-neon-city/Dark Waves (1 of 1) 2.jpg",
+        "src": "/images/series-neon-city/_web/Dark Waves (1 of 1) 2.jpg",
         "alt": "Dark Waves2",
         "caption": "Dark Waves2"
       },
       {
-        "src": "/images/series-neon-city/Dark-Times.jpg",
-        "alt": "Dark Times",
-        "caption": "Dark Times"
-      },
-      {
-        "src": "/images/series-neon-city/Dark Approach (1 of 1).jpg",
-        "alt": "Dark Approach",
-        "caption": "Dark Approach"
-      },
-      {
-        "src": "/images/series-neon-city/Famine (1 of 1).jpg",
+        "src": "/images/series-neon-city/_web/Famine (1 of 1).jpg",
         "alt": "Famine",
         "caption": "Famine"
       },
       {
-        "src": "/images/series-neon-city/The Aapproach (1 of 1).jpg",
-        "alt": "The Aapproach",
-        "caption": "The Aapproach"
-      },
-      {
-        "src": "/images/series-neon-city/Echoes In Chrome.jpg",
+        "src": "/images/series-neon-city/_web/Echoes In Chrome.jpg",
         "alt": "Echoes In Chrome",
         "caption": "Echoes In Chrome"
+      },
+      {
+        "src": "/images/series-neon-city/_web/Cine Bridge (1 of 1).jpg",
+        "alt": "Cine Bridge",
+        "caption": "Cine Bridge"
+      },
+      {
+        "src": "/images/series-neon-city/_web/Dark Flower Salt (1 of 1).jpg",
+        "alt": "Dark Flower Salt",
+        "caption": "Dark Flower Salt"
+      },
+      {
+        "src": "/images/series-neon-city/_web/Golden  Bridge1 (1 of 1).jpg",
+        "alt": "Golden Bridge1",
+        "caption": "Golden Bridge1"
       }
     ]
   },

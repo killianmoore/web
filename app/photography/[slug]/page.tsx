@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ExifToggleGallery } from "@/components/exif-toggle-gallery";
-import { getPhotoSeries, getPhotoSeriesBySlug } from "@/lib/content";
+import { getPhotoSeries, getPhotoSeriesBySlug } from "@/lib/photography-data";
 
 type Params = { slug: string };
 

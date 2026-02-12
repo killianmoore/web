@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { PhotographyEntry } from "@/components/photography-entry";
-import { getAllPhotos } from "@/lib/content";
+import { getAllPhotos } from "@/lib/photography-data";
 
 export const metadata: Metadata = {
   title: "Photography",

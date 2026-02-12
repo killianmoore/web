@@ -1,5 +1,4 @@
 import { Alchemy, Network } from "alchemy-sdk";
-import { unstable_cache } from "next/cache";
 
 export type NftImageItem = {
   contract: string;
@@ -9,7 +8,6 @@ export type NftImageItem = {
 };
 
 const REVALIDATE_SECONDS = 60 * 60 * 12;
-const CACHE_VERSION = "v2";
 const MAX_PAGES_PER_CONTRACT = 2;
 const MAX_TOTAL_ITEMS = 96;
 const TOKEN_URI_FETCH_TIMEOUT_MS = 5_000;
@@ -167,12 +165,7 @@ async function normalizeNft(nftInput: unknown): Promise<NftImageItem | null> {
 }
 
 export async function getNftsForContracts(addresses: string[]): Promise<NftImageItem[]> {
-  const key = addresses.map((address) => address.toLowerCase()).sort().join(",");
-  return unstable_cache(
-    async () => getNftsForContractsUncached(addresses),
-    ["alchemy-nfts", CACHE_VERSION, key],
-    { revalidate: REVALIDATE_SECONDS }
-  )();
+  return getNftsForContractsUncached(addresses);
 }
 
 async function getNftsForContractsUncached(addresses: string[]): Promise<NftImageItem[]> {
