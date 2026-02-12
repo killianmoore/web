@@ -3,36 +3,36 @@
     "slug": "neon-city",
     "title": "Neon City",
     "year": 2025,
-    "cover": "/images/series-neon-city/_web/Dark Waves (1 of 1) 2.jpg",
+    "cover": "/photography-web/01-dark-waves.jpg",
     "description": "A study of color and isolation inside midnight architecture.",
     "images": [
       {
-        "src": "/images/series-neon-city/_web/Dark Waves (1 of 1) 2.jpg",
+        "src": "/photography-web/01-dark-waves.jpg",
         "alt": "Dark Waves2",
         "caption": "Dark Waves2"
       },
       {
-        "src": "/images/series-neon-city/_web/Famine (1 of 1).jpg",
+        "src": "/photography-web/02-famine.jpg",
         "alt": "Famine",
         "caption": "Famine"
       },
       {
-        "src": "/images/series-neon-city/_web/Echoes In Chrome.jpg",
+        "src": "/photography-web/03-echoes-in-chrome.jpg",
         "alt": "Echoes In Chrome",
         "caption": "Echoes In Chrome"
       },
       {
-        "src": "/images/series-neon-city/_web/Cine Bridge (1 of 1).jpg",
+        "src": "/photography-web/04-cine-bridge.jpg",
         "alt": "Cine Bridge",
         "caption": "Cine Bridge"
       },
       {
-        "src": "/images/series-neon-city/_web/Dark Flower Salt (1 of 1).jpg",
+        "src": "/photography-web/05-dark-flower-salt.jpg",
         "alt": "Dark Flower Salt",
         "caption": "Dark Flower Salt"
       },
       {
-        "src": "/images/series-neon-city/_web/Golden  Bridge1 (1 of 1).jpg",
+        "src": "/photography-web/06-golden-bridge.jpg",
         "alt": "Golden Bridge1",
         "caption": "Golden Bridge1"
       }
