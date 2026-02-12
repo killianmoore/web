@@ -61,20 +61,11 @@ npm run build
 npm run start
 ```
 
-## Deploy
-
-### Vercel (recommended)
-
-1. Push project to GitHub/GitLab/Bitbucket.
-2. Import the repo in Vercel.
-3. Vercel detects Next.js automatically.
-4. Click Deploy.
-
-### Manual Node deployment
+## Run In Production Locally
 
 1. Run `npm run build`.
-2. Run `npm run start` on your server.
-3. Put a reverse proxy (like Nginx) in front if needed.
+2. Run `npm run start`.
+3. Open [http://localhost:3000](http://localhost:3000).
 
 ## Notes
 

@@ -318,6 +318,15 @@ const curatedPhotoOrder = [
   "/images/series-neon-city/Billy (1 of 1).jpg"
 ];
 
+function pickRandom<T>(items: T[], count: number): T[] {
+  const shuffled = [...items];
+  for (let i = shuffled.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled.slice(0, count);
+}
+
 export async function getAllPhotos(): Promise<Photo[]> {
   const series = await getPhotoSeries();
 
@@ -404,9 +413,11 @@ export async function getAllPhotos(): Promise<Photo[]> {
   const ordered = [...curatedPhotos, ...remaining];
   const landscapes = ordered.filter((photo) => photo.orientation === "landscape");
   const portraits = ordered.filter((photo) => photo.orientation === "portrait");
-  const unknown = ordered.filter((photo) => !photo.orientation);
 
-  return [...landscapes, ...portraits, ...unknown];
+  const selectedLandscapes = pickRandom(landscapes, 6);
+  const selectedPortraits = pickRandom(portraits, 6);
+
+  return [...selectedLandscapes, ...selectedPortraits];
 }
 
 export async function getPhotoSeriesBySlug(slug: string): Promise<PhotoSeries | null> {

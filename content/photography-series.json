@@ -3,78 +3,38 @@
     "slug": "neon-city",
     "title": "Neon City",
     "year": 2025,
-    "cover": "/images/series-neon-city/cover.jpg",
+    "cover": "/images/series-neon-city/Dark Waves (1 of 1) 2.jpg",
     "description": "A study of color and isolation inside midnight architecture.",
     "images": [
       {
-        "src": "/images/series-neon-city/n01.jpg",
-        "alt": "Neon City photograph 01",
-        "caption": "Neon City 01"
+        "src": "/images/series-neon-city/Dark Waves (1 of 1) 2.jpg",
+        "alt": "Dark Waves2",
+        "caption": "Dark Waves2"
       },
       {
-        "src": "/images/series-neon-city/n02.jpg",
-        "alt": "Neon City photograph 02",
-        "caption": "Neon City 02"
+        "src": "/images/series-neon-city/Dark-Times.jpg",
+        "alt": "Dark Times",
+        "caption": "Dark Times"
       },
       {
-        "src": "/images/series-neon-city/n03.jpg",
-        "alt": "Neon City photograph 03",
-        "caption": "Neon City 03"
+        "src": "/images/series-neon-city/Dark Approach (1 of 1).jpg",
+        "alt": "Dark Approach",
+        "caption": "Dark Approach"
       },
       {
-        "src": "/images/series-neon-city/n04.jpg",
-        "alt": "Neon City photograph 04",
-        "caption": "Neon City 04"
+        "src": "/images/series-neon-city/Famine (1 of 1).jpg",
+        "alt": "Famine",
+        "caption": "Famine"
       },
       {
-        "src": "/images/series-neon-city/n05.jpg",
-        "alt": "Neon City photograph 05",
-        "caption": "Neon City 05"
+        "src": "/images/series-neon-city/The Aapproach (1 of 1).jpg",
+        "alt": "The Aapproach",
+        "caption": "The Aapproach"
       },
       {
-        "src": "/images/series-neon-city/n06.jpg",
-        "alt": "Neon City photograph 06",
-        "caption": "Neon City 06"
-      },
-      {
-        "src": "/images/series-neon-city/n07.jpg",
-        "alt": "Neon City photograph 07",
-        "caption": "Neon City 07"
-      },
-      {
-        "src": "/images/series-neon-city/n08.jpg",
-        "alt": "Neon City photograph 08",
-        "caption": "Neon City 08"
-      },
-      {
-        "src": "/images/series-neon-city/n09.jpg",
-        "alt": "Neon City photograph 09",
-        "caption": "Neon City 09"
-      },
-      {
-        "src": "/images/series-neon-city/n10.jpg",
-        "alt": "Neon City photograph 10",
-        "caption": "Neon City 10"
-      },
-      {
-        "src": "/images/series-neon-city/n11.jpg",
-        "alt": "Neon City photograph 11",
-        "caption": "Neon City 11"
-      },
-      {
-        "src": "/images/series-neon-city/n12.jpg",
-        "alt": "Neon City photograph 12",
-        "caption": "Neon City 12"
-      },
-      {
-        "src": "/images/series-neon-city/n13.jpg",
-        "alt": "Neon City photograph 13",
-        "caption": "Neon City 13"
-      },
-      {
-        "src": "/images/series-neon-city/n14.jpg",
-        "alt": "Neon City photograph 14",
-        "caption": "Neon City 14"
+        "src": "/images/series-neon-city/Echoes In Chrome.jpg",
+        "alt": "Echoes In Chrome",
+        "caption": "Echoes In Chrome"
       }
     ]
   },
