@@ -12,7 +12,7 @@ export function HomeHero() {
     <section className="relative h-[100dvh] w-full overflow-hidden" id="home-hero-root">
       <Image
         alt="Cinematic hero photograph by Killian Moore"
-        className="object-cover"
+        className="object-cover object-[58%_center] sm:object-center"
         fill
         onError={() => setHeroSrc("/images/hero/_web/Wide TOTR Dark (1 of 1).jpg")}
         priority
@@ -23,7 +23,7 @@ export function HomeHero() {
       <div className="absolute inset-0 bg-black/20" />
       <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.54)_0%,rgba(0,0,0,0.08)_33%,rgba(0,0,0,0.08)_67%,rgba(0,0,0,0.44)_100%)]" />
 
-      <div className="absolute left-[63.5%] top-[52%] w-[min(37.9vw,488px)] -translate-x-[51.5%] -translate-y-1/2">
+      <div className="absolute left-1/2 top-[54%] w-[min(76vw,430px)] -translate-x-1/2 -translate-y-1/2 sm:left-[63.5%] sm:top-[52%] sm:w-[min(37.9vw,488px)] sm:-translate-x-[51.5%]">
         <motion.div
           animate={{ opacity: 1 }}
           initial={{ opacity: 0 }}
@@ -33,7 +33,7 @@ export function HomeHero() {
         </motion.div>
       </div>
 
-      <p className="absolute bottom-10 left-1/2 -translate-x-1/2 text-center text-[11px] uppercase tracking-[0.48em] text-white/55">
+      <p className="absolute bottom-8 left-1/2 -translate-x-1/2 text-center text-[10px] uppercase tracking-[0.34em] text-white/55 sm:bottom-10 sm:text-[11px] sm:tracking-[0.48em]">
         IN THE STILLNESS
       </p>
     </section>
