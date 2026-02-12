@@ -19,7 +19,7 @@ export default function LiveMintsPage() {
           <div className="relative aspect-[16/10] w-full overflow-hidden bg-black/40">
             <Image
               src="/images/live-mints/in-bsy-we-trust.jpg"
-              alt="In BSY We Trust live mint artwork"
+              alt="Liberty Reimagined - IN BSY We Trust live mint artwork"
               fill
               priority
               className="object-cover"
@@ -28,7 +28,7 @@ export default function LiveMintsPage() {
           </div>
 
           <div className="mx-auto mt-8 max-w-3xl text-center">
-            <h2 className="text-sm uppercase tracking-[0.3em] text-white/70">In BSY We Trust</h2>
+            <h2 className="text-sm uppercase tracking-[0.3em] text-white/70">Liberty Reimagined - IN BSY We Trust</h2>
 
             <div className="mt-6 space-y-5 text-[15px] leading-[1.8] text-white/78 md:text-[16px]">
               <p>
