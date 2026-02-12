@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import type { NftImageItem } from "@/lib/nfts-alchemy";
 
 type NftGalleryProps = {
-  items: NftImageItem[];
+  items: Array<NftImageItem & { marketUrl?: string }>;
 };
 
 export function NftGallery({ items }: NftGalleryProps) {
@@ -69,9 +69,20 @@ export function NftGallery({ items }: NftGalleryProps) {
                 src={item.imageUrl}
               />
             </button>
-            <p className="mt-4 text-[10px] uppercase leading-[1.2] tracking-[0.28em] text-white/40 transition-colors duration-300 group-hover:text-white/70 md:text-[11px]">
-              {item.name}
-            </p>
+            {item.marketUrl ? (
+              <a
+                className="mt-4 block text-[10px] uppercase leading-[1.2] tracking-[0.28em] text-white/40 transition-colors duration-300 hover:text-white/70 md:text-[11px]"
+                href={item.marketUrl}
+                rel="noreferrer"
+                target="_blank"
+              >
+                {item.name}
+              </a>
+            ) : (
+              <p className="mt-4 text-[10px] uppercase leading-[1.2] tracking-[0.28em] text-white/40 transition-colors duration-300 group-hover:text-white/70 md:text-[11px]">
+                {item.name}
+              </p>
+            )}
           </motion.article>
         ))}
       </section>
