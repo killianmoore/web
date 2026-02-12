@@ -16,7 +16,7 @@ export default function AboutPage() {
         <section className="mb-14 sm:mb-16">
           <div className="mb-4 text-[10px] tracking-[0.35em] text-white/35">BIO</div>
 
-          <div className="space-y-5 text-[15px] leading-[1.8] text-white/85 sm:text-[14px] sm:leading-relaxed">
+          <div className="space-y-5 text-[15px] leading-[1.8] text-white/85 sm:text-[17px] sm:leading-[1.9] lg:text-[18px]">
             <p>
               Killian Moore is a visual artist drawn to silence, scale, and the
               feeling of standing at the edge of something larger than language.
@@ -41,7 +41,7 @@ export default function AboutPage() {
         <section className="mb-14 sm:mb-16">
           <div className="mb-4 text-[10px] tracking-[0.35em] text-white/35">ARTIST STATEMENT</div>
 
-          <div className="space-y-5 text-[15px] leading-[1.8] text-white/85 sm:text-[14px] sm:leading-relaxed">
+          <div className="space-y-5 text-[15px] leading-[1.8] text-white/85 sm:text-[17px] sm:leading-[1.9] lg:text-[18px]">
             <p>
               I make photographs for people who are searching. Not for answers,
               but for a feeling that life can be wider, quieter, and more
