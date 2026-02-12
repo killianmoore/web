@@ -36,7 +36,7 @@ export default function AboutPage() {
           </h2>
 
           <div className="mt-6 space-y-6 text-white/78 leading-relaxed text-[15px] md:text-[16px]">
-            <p>I'm drawn to places where sound falls away and scale takes over.</p>
+            <p>I&apos;m drawn to places where sound falls away and scale takes over.</p>
 
             <p>
               Much of my work happens in the quiet - in wide landscapes, under night skies, and sometimes far above
@@ -46,11 +46,14 @@ export default function AboutPage() {
             <p>Photographing is a meditative process for me. It asks for stillness and patience, even when suspended in motion.</p>
 
             <p>
-              I don't approach these places to document them. I approach them to feel them - and to translate that
+              I don&apos;t approach these places to document them. I approach them to feel them - and to translate that
               feeling into something visible.
             </p>
 
-            <p>Vast horizons and distant stars aren't subjects. They're thresholds. So are cities seen from a distance.</p>
+            <p>
+              Vast horizons and distant stars aren&apos;t subjects. They&apos;re thresholds. So are cities seen from a
+              distance.
+            </p>
 
             <p>
               If the work succeeds, it carries the viewer somewhere else - away from the noise of the present and into
