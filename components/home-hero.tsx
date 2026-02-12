@@ -6,18 +6,28 @@ import { useState } from "react";
 import { BrandMark } from "@/components/brand-mark";
 
 export function HomeHero() {
-  const [heroSrc, setHeroSrc] = useState("/hero.jpg");
+  const [desktopHeroSrc, setDesktopHeroSrc] = useState("/hero.jpg");
+  const [mobileHeroSrc, setMobileHeroSrc] = useState("/photography-web/02-famine.jpg");
 
   return (
     <section className="relative h-[100dvh] w-full overflow-hidden" id="home-hero-root">
       <Image
         alt="Cinematic hero photograph by Killian Moore"
-        className="object-cover object-[58%_center] sm:object-center"
+        className="hidden object-cover object-center sm:block"
         fill
-        onError={() => setHeroSrc("/images/hero/_web/Wide TOTR Dark (1 of 1).jpg")}
+        onError={() => setDesktopHeroSrc("/images/hero/_web/Wide TOTR Dark (1 of 1).jpg")}
         priority
         sizes="100vw"
-        src={heroSrc}
+        src={desktopHeroSrc}
+      />
+      <Image
+        alt="Portrait hero photograph by Killian Moore"
+        className="object-cover object-center sm:hidden"
+        fill
+        onError={() => setMobileHeroSrc("/photography-web/03-echoes-in-chrome.jpg")}
+        priority
+        sizes="100vw"
+        src={mobileHeroSrc}
       />
 
       <div className="absolute inset-0 bg-black/20" />
