@@ -21,3 +21,4 @@ public/images/hero/*.tiff
 
 tsconfig.tsbuildinfo
 *.tsbuildinfo
+.vercel
