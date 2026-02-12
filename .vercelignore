@@ -15,3 +15,7 @@ public/images/hero/**
 # Exclude heavyweight source formats
 public/images/**/*.tif
 public/images/**/*.tiff
+
+# Keep deployment-safe photography assets
+!public/photography-web/
+!public/photography-web/**

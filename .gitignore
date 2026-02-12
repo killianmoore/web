@@ -11,13 +11,16 @@ build
 
 # Large raw photo sources (keep only web derivatives in git)
 public/series-neon-city/
-public/images/series-neon-city/*
+public/images/series-neon-city/**
 !public/images/series-neon-city/_web/
 !public/images/series-neon-city/_web/**
-public/images/series-neon-city/*.tif
-public/images/series-neon-city/*.tiff
-public/images/hero/*.tif
-public/images/hero/*.tiff
+public/images/hero/**
+!public/images/hero/_web/
+!public/images/hero/_web/**
+
+# Keep deployment-safe photography assets tracked
+!public/photography-web/
+!public/photography-web/**
 
 tsconfig.tsbuildinfo
 *.tsbuildinfo
