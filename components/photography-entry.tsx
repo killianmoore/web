@@ -13,7 +13,8 @@ const curatedHeroImages = [
 ];
 
 export function PhotographyEntry({ photos }: { photos: Photo[] }) {
-  type Tone = NonNullable<Photo["tone"]>;
+  type Tone = "night" | "neon" | "gold" | "warm" | "cool" | "mono";
+  const getTone = (photo: Photo): Tone | undefined => (photo as Photo & { tone?: Tone }).tone;
   const toneOrder: Tone[] = ["night", "neon", "gold", "warm", "cool", "mono"];
   const [activeTone, setActiveTone] = useState<"all" | Tone>("all");
 
@@ -33,8 +34,9 @@ export function PhotographyEntry({ photos }: { photos: Photo[] }) {
   const availableTones = useMemo(() => {
     const tones = new Set<Tone>();
     photos.forEach((photo) => {
-      if (photo.tone) {
-        tones.add(photo.tone);
+      const tone = getTone(photo);
+      if (tone) {
+        tones.add(tone);
       }
     });
     return toneOrder.filter((tone) => tones.has(tone));
@@ -44,7 +46,7 @@ export function PhotographyEntry({ photos }: { photos: Photo[] }) {
     if (activeTone === "all") {
       return photos;
     }
-    return photos.filter((photo) => photo.tone === activeTone);
+    return photos.filter((photo) => getTone(photo) === activeTone);
   }, [activeTone, photos]);
 
   const sequencedPhotos = useMemo(() => {
