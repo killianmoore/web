@@ -23,12 +23,8 @@ export default async function ContactPage() {
           Commissions & Collaborations
         </h1>
 
-        <div className="mx-auto mt-14 max-w-[600px] text-left">
-          <p className="text-center text-[18px] leading-[1.85] text-white/80 sm:text-[19px]">
-            If the work resonates, feel free to reach out.
-          </p>
-
-          <p className="mt-6 text-[18px] leading-[1.85] text-white/80 sm:text-[19px]">
+        <div className="mx-auto mt-14 max-w-[760px] text-left">
+          <p className="text-center text-[18px] leading-[1.85] text-white/80 sm:text-[19px] sm:whitespace-nowrap">
             Available for commissioned projects, print releases, and select 1/1 digital works.
           </p>
 
