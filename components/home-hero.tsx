@@ -26,15 +26,11 @@ export function HomeHero() {
         sizes="100vw"
         src={desktopHeroSrc}
       />
-      <Image
+      <img
         alt="Portrait hero photograph by Killian Moore"
-        className="object-cover object-center sm:hidden"
-        fill
+        className="absolute inset-0 h-full w-full object-cover object-center sm:hidden"
         onError={() => setMobileHeroSrc(homeMobileHeroPool[0] ?? "/hero.jpg")}
-        priority
-        sizes="100vw"
         src={mobileHeroSrc}
-        unoptimized
       />
 
       <div className="absolute inset-0 bg-black/20" />
