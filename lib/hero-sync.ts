@@ -97,6 +97,18 @@ export async function pickFirstLoadableHero(pool: string[], fallback: string): P
   return fallback;
 }
 
+export function shouldUseMobileHeroes(): boolean {
+  if (typeof window === "undefined") {
+    return false;
+  }
+
+  const widthMobile = window.matchMedia("(max-width: 1024px)").matches;
+  const uaMobile = /Mobi|Android|iPhone|iPad|iPod|Mobile/i.test(window.navigator.userAgent);
+  const coarsePointer = window.matchMedia("(pointer: coarse)").matches;
+
+  return widthMobile || uaMobile || coarsePointer;
+}
+
 function pickRandom(pool: string[], avoid?: string): string {
   if (pool.length === 0) {
     return "";

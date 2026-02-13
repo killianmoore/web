@@ -4,16 +4,22 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { BrandMark } from "@/components/brand-mark";
-import { homeDesktopHeroPool, homeMobileHeroPool, pickFirstLoadableHero, pickRandomHero } from "@/lib/hero-sync";
+import {
+  homeDesktopHeroPool,
+  homeMobileHeroPool,
+  pickFirstLoadableHero,
+  pickRandomHero,
+  shouldUseMobileHeroes
+} from "@/lib/hero-sync";
 
 export function HomeHero() {
   const [heroSrc, setHeroSrc] = useState(homeDesktopHeroPool[0] ?? "/hero.jpg");
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const mq = window.matchMedia("(max-width: 639px)");
+    const mq = window.matchMedia("(max-width: 1024px)");
     const applyHero = () => {
-      const mobile = mq.matches;
+      const mobile = shouldUseMobileHeroes() || mq.matches;
       setIsMobile(mobile);
       if (mobile) {
         void pickFirstLoadableHero(homeMobileHeroPool, homeDesktopHeroPool[0] ?? "/hero.jpg")

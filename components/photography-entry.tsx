@@ -4,7 +4,13 @@ import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import { SeriesGrid } from "@/components/series-grid";
 import type { Photo } from "@/lib/content";
-import { pickFirstLoadableHero, pickRandomHero, photographyDesktopHeroPool, photographyMobileHeroPool } from "@/lib/hero-sync";
+import {
+  pickFirstLoadableHero,
+  pickRandomHero,
+  photographyDesktopHeroPool,
+  photographyMobileHeroPool,
+  shouldUseMobileHeroes
+} from "@/lib/hero-sync";
 
 export function PhotographyEntry({ photos }: { photos: Photo[] }) {
   type Tone = "night" | "gold" | "warm" | "cool" | "mono";
@@ -16,9 +22,9 @@ export function PhotographyEntry({ photos }: { photos: Photo[] }) {
 
   useEffect(() => {
     document.body.classList.remove("route-fade-black");
-    const mq = window.matchMedia("(max-width: 639px)");
+    const mq = window.matchMedia("(max-width: 1024px)");
     const applyHero = () => {
-      const mobile = mq.matches;
+      const mobile = shouldUseMobileHeroes() || mq.matches;
       setIsMobile(mobile);
       if (mobile) {
         void pickFirstLoadableHero(photographyMobileHeroPool, photographyDesktopHeroPool[0] ?? "/hero.jpg")
