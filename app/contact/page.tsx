@@ -3,6 +3,8 @@ import Link from "next/link";
 import { ContactForm } from "@/components/contact-form";
 import { getSiteContent } from "@/lib/content";
 
+const EMAIL = "killian@killianmoore.com";
+
 export const metadata: Metadata = {
   title: "Contact",
   description: "Contact Killian Moore for commissions, editions, and collaborations."
@@ -19,12 +21,14 @@ export default async function ContactPage() {
         <p className="text-sm leading-relaxed text-white/78">
           Use the form to start a conversation about commissions, print releases, speaking, or NFT drops.
         </p>
-        <p className="text-sm text-white">
-          Email:{" "}
-          <a className="underline underline-offset-4 transition hover:text-white/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white" href={`mailto:${site.email}`}>
-            {site.email}
+        <div className="mt-6">
+          <a
+            className="text-white/80 underline underline-offset-4 decoration-white/25 transition hover:text-white hover:decoration-white/50"
+            href={`mailto:${EMAIL}`}
+          >
+            {EMAIL}
           </a>
-        </p>
+        </div>
         <div className="space-y-2 text-sm text-white/62">
           <p>Socials</p>
           <ul className="flex flex-wrap gap-3">
