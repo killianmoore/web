@@ -13,7 +13,7 @@ export default async function ContactPage() {
   const getSocialUrl = (label: string) => site.socials.find((social) => social.label === label)?.url ?? "#";
 
   return (
-    <div className="min-h-screen bg-[#0e0e0e] px-6 text-white">
+    <div className="min-h-screen bg-black px-6 text-white">
       <div className="mx-auto max-w-[760px] pb-40 pt-40">
         <p className="text-center text-[11px] tracking-[0.35em] uppercase text-white/50">
           Contact
@@ -24,15 +24,11 @@ export default async function ContactPage() {
         </h1>
 
         <div className="mx-auto mt-14 max-w-[600px] text-left">
-          <p className="text-[18px] leading-[1.85] text-white/85 sm:text-[19px]">
+          <p className="mt-6 text-[18px] leading-[1.85] text-white/80 sm:text-[19px]">
             If the work resonates, feel free to reach out.
           </p>
 
-          <p className="mt-6 text-[18px] leading-[1.85] text-white/80 sm:text-[19px]">
-            Available for commissioned projects, print releases, and select digital works.
-          </p>
-
-          <p className="mt-14 text-[11px] tracking-[0.35em] uppercase text-white/60">
+          <p className="mt-14 text-[11px] tracking-[0.35em] uppercase text-white/60 underline underline-offset-4 decoration-white/35">
             Direct Inquiries
           </p>
 
@@ -43,7 +39,7 @@ export default async function ContactPage() {
             {EMAIL}
           </a>
 
-          <div className="mt-14 flex gap-8 text-[16px] text-white/70">
+          <div className="mt-14 flex justify-center gap-8 text-[16px] text-white/70">
             <a href={getSocialUrl("X")} className="transition hover:text-white" rel="noreferrer" target="_blank">X</a>
             <a href={getSocialUrl("Instagram")} className="transition hover:text-white" rel="noreferrer" target="_blank">Instagram</a>
             <a href={getSocialUrl("SuperRare")} className="transition hover:text-white" rel="noreferrer" target="_blank">SuperRare</a>
