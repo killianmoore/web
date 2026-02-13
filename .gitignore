@@ -10,7 +10,6 @@ build
 .env.*.local
 
 # Large raw photo sources (keep only web derivatives in git)
-public/series-neon-city/
 public/images/series-neon-city/**
 !public/images/series-neon-city/_web/
 !public/images/series-neon-city/_web/**
