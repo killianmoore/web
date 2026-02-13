@@ -16,8 +16,8 @@ export default async function ContactPage() {
   return (
     <section className="mx-auto grid w-[min(94vw,1160px)] gap-10 py-28 lg:grid-cols-[0.9fr_1.1fr]">
       <div className="space-y-5">
-        <p className="text-[16px] leading-[1.9] text-white/80 sm:text-[17px]">Contact</p>
-        <h1 className="text-[16px] leading-[1.9] text-white/80 sm:text-[17px]">Commissions & Collaborations</h1>
+        <p className="text-[0.64rem] uppercase tracking-[0.24em] text-white/50">Contact</p>
+        <h1 className="font-display text-5xl text-white">Commissions & Collaborations</h1>
         <p className="text-[16px] leading-[1.9] text-white/80 sm:text-[17px]">
           Use the form to start a conversation about commissions, print releases, 1/1 digital originals, or just to
           have a chat.
