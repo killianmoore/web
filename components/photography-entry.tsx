@@ -13,9 +13,9 @@ const curatedHeroImages = [
 ];
 
 export function PhotographyEntry({ photos }: { photos: Photo[] }) {
-  type Tone = "night" | "neon" | "gold" | "warm" | "cool" | "mono";
+  type Tone = "night" | "gold" | "warm" | "cool" | "mono";
   const getTone = (photo: Photo): Tone | undefined => (photo as Photo & { tone?: Tone }).tone;
-  const toneOrder: Tone[] = ["night", "neon", "gold", "warm", "cool", "mono"];
+  const toneOrder: Tone[] = ["night", "gold", "warm", "cool", "mono"];
   const [activeTone, setActiveTone] = useState<"all" | Tone>("all");
 
   const heroImage = useMemo(() => {
