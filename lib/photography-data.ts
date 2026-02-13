@@ -226,6 +226,126 @@ function applyCurationOrder(photos: Photo[]): Photo[] {
   return [...pinnedOrdered, ...remaining];
 }
 
+function extractWebsiteNumber(photo: Photo): number | null {
+  const match = photo.src.match(/Website(\d+)\.(jpg|jpeg|png|webp|avif)$/i);
+  if (!match) {
+    return null;
+  }
+  const num = Number.parseInt(match[1], 10);
+  return Number.isFinite(num) ? num : null;
+}
+
+function autoDiversifyByTone(items: Photo[]): Photo[] {
+  if (items.length <= 2) {
+    return items;
+  }
+
+  const remaining = [...items];
+  const first = remaining.shift();
+  if (!first) return [];
+
+  const ordered: Photo[] = [first];
+
+  while (remaining.length > 0) {
+    const prev = ordered[ordered.length - 1];
+    const prevTone = prev.tone;
+    const prevNum = extractWebsiteNumber(prev);
+
+    let bestIndex = 0;
+    let bestScore = Number.NEGATIVE_INFINITY;
+
+    for (let i = 0; i < remaining.length; i += 1) {
+      const candidate = remaining[i];
+      let score = 0;
+
+      if (candidate.tone && prevTone && candidate.tone !== prevTone) {
+        score += 3;
+      }
+      if (candidate.tone && prevTone && candidate.tone === prevTone) {
+        score -= 2;
+      }
+
+      const candidateNum = extractWebsiteNumber(candidate);
+      if (candidateNum !== null && prevNum !== null) {
+        const distance = Math.abs(candidateNum - prevNum);
+        if (distance >= 10) score += 2;
+        else if (distance <= 2) score -= 1;
+      }
+
+      if (score > bestScore) {
+        bestScore = score;
+        bestIndex = i;
+      }
+    }
+
+    const next = remaining.splice(bestIndex, 1)[0];
+    ordered.push(next);
+  }
+
+  return ordered;
+}
+
+function interleaveInBlocks(landscapes: Photo[], portraits: Photo[], blockSize = 3): Photo[] {
+  const output: Photo[] = [];
+  let l = 0;
+  let p = 0;
+
+  while (l < landscapes.length || p < portraits.length) {
+    for (let i = 0; i < blockSize && l < landscapes.length; i += 1) {
+      output.push(landscapes[l]);
+      l += 1;
+    }
+    for (let i = 0; i < blockSize && p < portraits.length; i += 1) {
+      output.push(portraits[p]);
+      p += 1;
+    }
+  }
+
+  return output;
+}
+
+function autoCuratePhotos(photos: Photo[]): Photo[] {
+  const pinnedKeys = new Set((curationData.pinned ?? []).filter(Boolean));
+  const pinned: Photo[] = [];
+  const flexible: Photo[] = [];
+
+  photos.forEach((photo) => {
+    if (pinnedKeys.has(photo.id) || pinnedKeys.has(photo.src)) {
+      pinned.push(photo);
+    } else {
+      flexible.push(photo);
+    }
+  });
+
+  const landscapes = flexible.filter((photo) => photo.orientation === "landscape");
+  const portraits = flexible.filter((photo) => photo.orientation === "portrait");
+  const unknown = flexible.filter((photo) => !photo.orientation);
+
+  const landscapeSorted = autoDiversifyByTone(
+    [...landscapes].sort((a, b) => {
+      const an = extractWebsiteNumber(a) ?? Number.MAX_SAFE_INTEGER;
+      const bn = extractWebsiteNumber(b) ?? Number.MAX_SAFE_INTEGER;
+      return an - bn;
+    })
+  );
+  const portraitSorted = autoDiversifyByTone(
+    [...portraits].sort((a, b) => {
+      const an = extractWebsiteNumber(a) ?? Number.MAX_SAFE_INTEGER;
+      const bn = extractWebsiteNumber(b) ?? Number.MAX_SAFE_INTEGER;
+      return an - bn;
+    })
+  );
+  const unknownSorted = autoDiversifyByTone(
+    [...unknown].sort((a, b) => {
+      const an = extractWebsiteNumber(a) ?? Number.MAX_SAFE_INTEGER;
+      const bn = extractWebsiteNumber(b) ?? Number.MAX_SAFE_INTEGER;
+      return an - bn;
+    })
+  );
+
+  return [...pinned, ...interleaveInBlocks(landscapeSorted, portraitSorted, 3), ...unknownSorted];
+}
+
 export async function getPhotoSeries(): Promise<PhotoSeries[]> {
   return getValidSeriesData();
 }
@@ -252,5 +372,5 @@ export async function getAllPhotos(): Promise<Photo[]> {
     )
   );
 
-  return applyCurationOrder(photos);
+  return autoCuratePhotos(applyCurationOrder(photos));
 }
