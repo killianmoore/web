@@ -1,4 +1,5 @@
 import rawSeries from "@/content/photography-series.json";
+import rawCuration from "@/content/photography-curation.json";
 import fs from "node:fs/promises";
 import path from "node:path";
 
@@ -41,6 +42,11 @@ export type PhotoSeries = {
 };
 
 const seriesData = rawSeries as PhotoSeries[];
+type CurationConfig = {
+  pinned?: string[];
+  exclude?: string[];
+};
+const curationData = (rawCuration as CurationConfig) ?? {};
 
 const toneKeywordMap: Record<Tone, string[]> = {
   warm: ["warm", "sunset", "dawn", "rose", "pink", "amber", "orange", "red"],
@@ -188,6 +194,38 @@ async function getValidSeriesData(): Promise<PhotoSeries[]> {
   return validated.filter((series) => series.images.length > 0);
 }
 
+function applyCurationOrder(photos: Photo[]): Photo[] {
+  const pinned = curationData.pinned ?? [];
+  const excludeSet = new Set(curationData.exclude ?? []);
+  const byKey = new Map<string, Photo>();
+
+  photos.forEach((photo) => {
+    byKey.set(photo.id, photo);
+    byKey.set(photo.src, photo);
+  });
+
+  const pinnedOrdered: Photo[] = [];
+  const seen = new Set<string>();
+
+  pinned.forEach((key) => {
+    const photo = byKey.get(key);
+    if (!photo) return;
+    if (excludeSet.has(photo.id) || excludeSet.has(photo.src)) return;
+    if (seen.has(photo.id)) return;
+    seen.add(photo.id);
+    pinnedOrdered.push(photo);
+  });
+
+  const remaining = photos.filter((photo) => {
+    if (excludeSet.has(photo.id) || excludeSet.has(photo.src)) {
+      return false;
+    }
+    return !seen.has(photo.id);
+  });
+
+  return [...pinnedOrdered, ...remaining];
+}
+
 export async function getPhotoSeries(): Promise<PhotoSeries[]> {
   return getValidSeriesData();
 }
@@ -214,5 +252,5 @@ export async function getAllPhotos(): Promise<Photo[]> {
     )
   );
 
-  return photos;
+  return applyCurationOrder(photos);
 }
