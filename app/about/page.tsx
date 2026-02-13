@@ -7,8 +7,8 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-black text-white">
-      <div className="mx-auto w-full max-w-5xl px-6 pb-24 pt-24 sm:px-8 sm:pt-28 lg:px-12">
+    <main className="min-h-screen bg-black px-6 text-white">
+      <div className="mx-auto max-w-[720px] pb-40 pt-32">
         <div className="mb-12 text-center sm:mb-14">
           <div className="text-[11px] tracking-[0.35em] text-white/60 sm:text-[12px]">ABOUT</div>
         </div>
@@ -72,6 +72,7 @@ export default function AboutPage() {
               Silence and scale run through everything I make. Light is what
               holds it together.
             </p>
+
           </div>
         </section>
 

@@ -11,8 +11,9 @@ const config: Config = {
         line: "#242424"
       },
       fontFamily: {
-        display: ["var(--font-cormorant)", "serif"],
-        sans: ["var(--font-sora)", "system-ui", "sans-serif"]
+        serif: ["var(--font-serif)"],
+        sans: ["var(--font-sans)"],
+        display: ["var(--font-serif)"]
       },
       animation: {
         "page-in": "pageIn 420ms ease-out both"

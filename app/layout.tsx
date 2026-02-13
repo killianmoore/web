@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Sora } from "next/font/google";
+import { DM_Serif_Display, Inter } from "next/font/google";
 import "./globals.css";
 import { FloatingNav } from "@/components/floating-nav";
 import { PageShell } from "@/components/page-shell";
 import { SiteFooter } from "@/components/site-footer";
 
-const sora = Sora({
+const sans = Inter({
   subsets: ["latin"],
-  variable: "--font-sora"
+  variable: "--font-sans"
 });
 
-const cormorant = Cormorant_Garamond({
+const serif = DM_Serif_Display({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-cormorant"
+  weight: "400",
+  variable: "--font-serif"
 });
 
 export const metadata: Metadata = {
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html className="dark" lang="en">
-      <body className={`${sora.variable} ${cormorant.variable} bg-black font-sans text-white antialiased`}>
+      <body className={`${serif.variable} ${sans.variable} bg-black text-white`}>
         <div aria-hidden="true" className="route-fade-overlay" />
         <FloatingNav />
         <PageShell>{children}</PageShell>

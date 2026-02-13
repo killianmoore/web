@@ -9,16 +9,22 @@ export type ExifData = {
   aperture?: string;
 };
 
+export type Tone = "warm" | "cool" | "mono" | "night" | "gold" | "neon";
+
 export type PhotoImage = {
+  id?: string;
   src: string;
   alt: string;
   caption: string;
+  tone?: Tone;
   exif?: ExifData;
 };
 
 export type Photo = {
+  id: string;
   src: string;
   alt?: string;
+  tone?: Tone;
   width?: number;
   height?: number;
   orientation?: "landscape" | "portrait";
@@ -342,8 +348,10 @@ export async function getAllPhotos(): Promise<Photo[]> {
           }
           const meta = await getImageMeta(resolved.filePublicUrl);
           return {
+            id: image.id ?? image.src,
             src: resolved.src,
             alt: image.alt,
+            tone: image.tone,
             ...meta
           } satisfies Photo;
         })
@@ -383,12 +391,14 @@ export async function getAllPhotos(): Promise<Photo[]> {
             return null;
           }
           const meta = await getImageMeta(resolved.filePublicUrl);
-          return {
-            src: resolved.src,
-            alt: photo.alt,
-            ...meta
-          } satisfies Photo;
-        })
+            return {
+              id: photo._publicUrl,
+              src: resolved.src,
+              alt: photo.alt,
+              tone: undefined,
+              ...meta
+            } satisfies Photo;
+          })
       )
     ).filter(isDefined);
   } catch {
