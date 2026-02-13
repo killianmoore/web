@@ -6,10 +6,26 @@ import { SeriesGrid } from "@/components/series-grid";
 import type { Photo } from "@/lib/content";
 
 const curatedHeroImages = [
-  "/images/hero/_web/hero-01.jpg",
-  "/images/hero/_web/hero-02.jpg",
-  "/images/hero/_web/hero-03.jpg",
-  "/images/hero/_web/hero-04.jpg"
+  "/images/hero/_web/Website2.jpg",
+  "/images/hero/_web/Website11.jpg",
+  "/images/hero/_web/Website13.jpg",
+  "/images/hero/_web/Website15.jpg",
+  "/images/hero/_web/Website18.jpg",
+  "/images/hero/_web/Website28.jpg",
+  "/images/hero/_web/Website31.jpg",
+  "/images/hero/_web/Website35.jpg",
+  "/images/hero/_web/Website36.jpg",
+  "/images/hero/_web/Website38.jpg",
+  "/images/hero/_web/Website51.jpg",
+  "/images/hero/_web/Website56.jpg",
+  "/images/hero/_web/Website65.jpg",
+  "/images/hero/_web/Website66.jpg",
+  "/images/hero/_web/Website67.jpg",
+  "/images/hero/_web/Website91.jpg",
+  "/images/hero/_web/Website94.jpg",
+  "/images/hero/_web/Website97.jpg",
+  "/images/hero/_web/Website98.jpg",
+  "/images/hero/_web/Website102.jpg"
 ];
 
 export function PhotographyEntry({ photos }: { photos: Photo[] }) {
