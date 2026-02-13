@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import type { Photo } from "@/lib/content";
-import { aspectClass, layoutKindForIndex } from "@/lib/layout";
 
 export function SeriesGrid({ photos }: { photos: Photo[] }) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -69,15 +68,14 @@ export function SeriesGrid({ photos }: { photos: Photo[] }) {
               onClick={() => setActiveIndex(index)}
               type="button"
             >
-              <div className={`relative w-full overflow-hidden ${aspectClass(layoutKindForIndex(index))}`}>
               <Image
                 alt={photo.alt ?? `Gallery photo ${index + 1}`}
-                className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-                fill
+                className="h-auto w-full object-contain transition-transform duration-500 group-hover:scale-[1.02]"
+                height={photo.height ?? 1800}
                 sizes="(max-width: 767px) 92vw, (max-width: 1023px) 44vw, 30vw"
                 src={photo.src}
+                width={photo.width ?? 2600}
               />
-              </div>
             </button>
           </motion.article>
         ))}
