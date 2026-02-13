@@ -71,7 +71,7 @@ export function NftGallery({ items }: NftGalleryProps) {
             </button>
             {item.marketUrl ? (
               <a
-                className="mt-4 block text-[10px] uppercase leading-[1.2] tracking-[0.28em] text-white/40 transition-colors duration-300 hover:text-white/70 md:text-[11px]"
+                className="mt-4 block text-[10px] uppercase leading-[1.2] tracking-[0.28em] text-white/40 underline underline-offset-4 decoration-white/30 transition-colors duration-300 hover:text-white/70 hover:decoration-white/60 md:text-[11px]"
                 href={item.marketUrl}
                 rel="noreferrer"
                 target="_blank"
@@ -79,7 +79,7 @@ export function NftGallery({ items }: NftGalleryProps) {
                 {item.name}
               </a>
             ) : (
-              <p className="mt-4 text-[10px] uppercase leading-[1.2] tracking-[0.28em] text-white/40 transition-colors duration-300 group-hover:text-white/70 md:text-[11px]">
+              <p className="mt-4 text-[10px] uppercase leading-[1.2] tracking-[0.28em] text-white/40 underline underline-offset-4 decoration-white/30 transition-colors duration-300 group-hover:text-white/70 group-hover:decoration-white/60 md:text-[11px]">
                 {item.name}
               </p>
             )}
