@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { DM_Serif_Display, Inter } from "next/font/google";
 import "./globals.css";
 import { FloatingNav } from "@/components/floating-nav";
@@ -33,6 +33,12 @@ export const metadata: Metadata = {
     title: "Killian Moore | Photography + NFTs",
     description: "Always-dark, photo-forward portfolio and NFT archive for photographer Killian Moore."
   }
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover"
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
