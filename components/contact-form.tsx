@@ -49,11 +49,11 @@ export function ContactForm() {
     <div className="space-y-5 rounded-xl border border-white/15 bg-white/[0.02] p-5">
       <form className="space-y-4" onSubmit={handleSubmit}>
         <div>
-          <label className="mb-1 block text-xs uppercase tracking-[0.12em] text-white/55" htmlFor="name">
+          <label className="mb-1 block text-[16px] leading-[1.9] text-white/80 sm:text-[17px]" htmlFor="name">
             Name
           </label>
           <input
-            className="w-full rounded-md border border-white/20 bg-black/30 px-3 py-2 text-sm text-white outline-none transition focus:border-white focus-visible:ring-2 focus-visible:ring-white/45"
+            className="w-full rounded-md border border-white/20 bg-black/30 px-3 py-2 text-[16px] leading-[1.9] text-white/80 outline-none transition focus:border-white focus-visible:ring-2 focus-visible:ring-white/45 sm:text-[17px]"
             id="name"
             name="name"
             disabled={submitting}
@@ -62,11 +62,11 @@ export function ContactForm() {
           />
         </div>
         <div>
-          <label className="mb-1 block text-xs uppercase tracking-[0.12em] text-white/55" htmlFor="email">
+          <label className="mb-1 block text-[16px] leading-[1.9] text-white/80 sm:text-[17px]" htmlFor="email">
             Email
           </label>
           <input
-            className="w-full rounded-md border border-white/20 bg-black/30 px-3 py-2 text-sm text-white outline-none transition focus:border-white focus-visible:ring-2 focus-visible:ring-white/45"
+            className="w-full rounded-md border border-white/20 bg-black/30 px-3 py-2 text-[16px] leading-[1.9] text-white/80 outline-none transition focus:border-white focus-visible:ring-2 focus-visible:ring-white/45 sm:text-[17px]"
             id="email"
             name="email"
             disabled={submitting}
@@ -75,11 +75,11 @@ export function ContactForm() {
           />
         </div>
         <div>
-          <label className="mb-1 block text-xs uppercase tracking-[0.12em] text-white/55" htmlFor="message">
+          <label className="mb-1 block text-[16px] leading-[1.9] text-white/80 sm:text-[17px]" htmlFor="message">
             Message
           </label>
           <textarea
-            className="min-h-32 w-full rounded-md border border-white/20 bg-black/30 px-3 py-2 text-sm text-white outline-none transition focus:border-white focus-visible:ring-2 focus-visible:ring-white/45"
+            className="min-h-32 w-full rounded-md border border-white/20 bg-black/30 px-3 py-2 text-[16px] leading-[1.9] text-white/80 outline-none transition focus:border-white focus-visible:ring-2 focus-visible:ring-white/45 sm:text-[17px]"
             id="message"
             name="message"
             disabled={submitting}
@@ -87,7 +87,7 @@ export function ContactForm() {
           />
         </div>
         <button
-          className="rounded-full border border-white/70 px-5 py-2 text-xs uppercase tracking-[0.16em] text-white transition hover:border-white hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+          className="rounded-full border border-white/70 px-5 py-2 text-[16px] leading-[1.9] text-white/80 transition hover:border-white hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:text-[17px]"
           disabled={submitting}
           type="submit"
         >
@@ -95,12 +95,12 @@ export function ContactForm() {
         </button>
       </form>
       {error ? (
-        <p aria-live="polite" className="text-sm text-red-300">
+        <p aria-live="polite" className="text-[16px] leading-[1.9] text-red-300 sm:text-[17px]">
           {error}
         </p>
       ) : null}
       {submitted ? (
-        <p aria-live="polite" className="text-sm text-white/85">
+        <p aria-live="polite" className="text-[16px] leading-[1.9] text-white/80 sm:text-[17px]">
           Message sent. Thanks, I will get back to you soon.
         </p>
       ) : null}
