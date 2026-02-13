@@ -4,47 +4,36 @@ import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import { SeriesGrid } from "@/components/series-grid";
 import type { Photo } from "@/lib/content";
-
-const curatedHeroImages = [
-  "/images/hero/_web/Website2.jpg",
-  "/images/hero/_web/Website11.jpg",
-  "/images/hero/_web/Website13.jpg",
-  "/images/hero/_web/Website15.jpg",
-  "/images/hero/_web/Website18.jpg",
-  "/images/hero/_web/Website28.jpg",
-  "/images/hero/_web/Website31.jpg",
-  "/images/hero/_web/Website35.jpg",
-  "/images/hero/_web/Website36.jpg",
-  "/images/hero/_web/Website38.jpg",
-  "/images/hero/_web/Website51.jpg",
-  "/images/hero/_web/Website56.jpg",
-  "/images/hero/_web/Website65.jpg",
-  "/images/hero/_web/Website66.jpg",
-  "/images/hero/_web/Website67.jpg",
-  "/images/hero/_web/Website91.jpg",
-  "/images/hero/_web/Website94.jpg",
-  "/images/hero/_web/Website97.jpg",
-  "/images/hero/_web/Website98.jpg",
-  "/images/hero/_web/Website102.jpg"
-];
+import { HERO_STORAGE_KEYS, desktopHeroPool, mobileHeroPool, pickSyncedHero } from "@/lib/hero-sync";
 
 export function PhotographyEntry({ photos }: { photos: Photo[] }) {
   type Tone = "night" | "gold" | "warm" | "cool" | "mono";
   const getTone = (photo: Photo): Tone | undefined => (photo as Photo & { tone?: Tone }).tone;
   const toneOrder: Tone[] = ["night", "gold", "warm", "cool", "mono"];
   const [activeTone, setActiveTone] = useState<Tone | null>(null);
-
-  const heroImage = useMemo(() => {
-    if (curatedHeroImages.length === 0) {
-      return "/hero.jpg";
-    }
-    const index = Math.floor(Math.random() * curatedHeroImages.length);
-    return curatedHeroImages[index];
-  }, []);
-  const [currentHeroSrc, setCurrentHeroSrc] = useState(heroImage);
+  const [currentDesktopHeroSrc, setCurrentDesktopHeroSrc] = useState(desktopHeroPool[0] ?? "/hero.jpg");
+  const [currentMobileHeroSrc, setCurrentMobileHeroSrc] = useState(mobileHeroPool[0] ?? "/hero.jpg");
 
   useEffect(() => {
     document.body.classList.remove("route-fade-black");
+
+    setCurrentDesktopHeroSrc(
+      pickSyncedHero({
+        selfKey: HERO_STORAGE_KEYS.photographyDesktop,
+        otherKey: HERO_STORAGE_KEYS.homeDesktop,
+        pool: desktopHeroPool,
+        fallback: desktopHeroPool[0] ?? "/hero.jpg"
+      })
+    );
+
+    setCurrentMobileHeroSrc(
+      pickSyncedHero({
+        selfKey: HERO_STORAGE_KEYS.photographyMobile,
+        otherKey: HERO_STORAGE_KEYS.homeMobile,
+        pool: mobileHeroPool,
+        fallback: mobileHeroPool[0] ?? "/hero.jpg"
+      })
+    );
   }, []);
 
   const availableTones = useMemo(() => {
@@ -82,12 +71,21 @@ export function PhotographyEntry({ photos }: { photos: Photo[] }) {
       <section className="relative h-[100dvh] w-full overflow-hidden">
         <Image
           alt="Photography entry hero"
-          className="object-cover brightness-[1.05] contrast-[1.02] saturate-[1.03]"
+          className="hidden object-cover brightness-[1.05] contrast-[1.02] saturate-[1.03] sm:block"
           fill
-          onError={() => setCurrentHeroSrc("/hero.jpg")}
+          onError={() => setCurrentDesktopHeroSrc(desktopHeroPool[0] ?? "/hero.jpg")}
           priority
           sizes="100vw"
-          src={currentHeroSrc}
+          src={currentDesktopHeroSrc}
+        />
+        <Image
+          alt="Photography entry hero mobile"
+          className="object-cover brightness-[1.05] contrast-[1.02] saturate-[1.03] sm:hidden"
+          fill
+          onError={() => setCurrentMobileHeroSrc(mobileHeroPool[0] ?? "/hero.jpg")}
+          priority
+          sizes="100vw"
+          src={currentMobileHeroSrc}
         />
         <div className="absolute inset-0 bg-black/12" />
         <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.38)_0%,rgba(0,0,0,0.04)_34%,rgba(0,0,0,0.04)_68%,rgba(0,0,0,0.30)_100%)]" />
