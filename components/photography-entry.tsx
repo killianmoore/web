@@ -46,6 +46,29 @@ export function PhotographyEntry({ photos }: { photos: Photo[] }) {
     return photos.filter((photo) => photo.tone === activeTone);
   }, [activeTone, photos]);
 
+  const sequencedPhotos = useMemo(() => {
+    const landscapes = filteredPhotos.filter((photo) => photo.orientation === "landscape");
+    const portraits = filteredPhotos.filter((photo) => photo.orientation === "portrait");
+    const unknown = filteredPhotos.filter((photo) => !photo.orientation);
+    const ordered: Photo[] = [];
+
+    let l = 0;
+    let p = 0;
+
+    while (l < landscapes.length || p < portraits.length) {
+      for (let i = 0; i < 3 && l < landscapes.length; i += 1) {
+        ordered.push(landscapes[l]);
+        l += 1;
+      }
+      for (let i = 0; i < 3 && p < portraits.length; i += 1) {
+        ordered.push(portraits[p]);
+        p += 1;
+      }
+    }
+
+    return [...ordered, ...unknown];
+  }, [filteredPhotos]);
+
   const labelForTone = (tone: Tone | "all") => (tone === "all" ? "All" : tone.charAt(0).toUpperCase() + tone.slice(1));
 
   return (
@@ -94,7 +117,7 @@ export function PhotographyEntry({ photos }: { photos: Photo[] }) {
           ))}
         </div>
 
-        <SeriesGrid photos={filteredPhotos} />
+        <SeriesGrid photos={sequencedPhotos} />
       </section>
     </>
   );
