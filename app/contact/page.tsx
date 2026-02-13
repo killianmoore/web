@@ -21,10 +21,11 @@ export default async function ContactPage() {
         <p className="text-sm leading-relaxed text-white/78">
           Use the form to start a conversation about commissions, print releases, speaking, or NFT drops.
         </p>
-        <div className="mt-6">
+        <div className="mt-10 space-y-3">
+          <p className="text-[11px] tracking-[0.35em] text-white/50 uppercase">Direct Inquiries</p>
           <a
-            className="text-white/80 underline underline-offset-4 decoration-white/25 transition hover:text-white hover:decoration-white/50"
             href={`mailto:${EMAIL}`}
+            className="text-[16px] leading-[1.9] text-white/80 transition hover:text-white sm:text-[17px]"
           >
             {EMAIL}
           </a>
