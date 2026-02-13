@@ -16,7 +16,7 @@ export function PhotographyEntry({ photos }: { photos: Photo[] }) {
   type Tone = "night" | "gold" | "warm" | "cool" | "mono";
   const getTone = (photo: Photo): Tone | undefined => (photo as Photo & { tone?: Tone }).tone;
   const toneOrder: Tone[] = ["night", "gold", "warm", "cool", "mono"];
-  const [activeTone, setActiveTone] = useState<"all" | Tone>("all");
+  const [activeTone, setActiveTone] = useState<Tone | null>(null);
 
   const heroImage = useMemo(() => {
     if (curatedHeroImages.length === 0) {
@@ -42,14 +42,24 @@ export function PhotographyEntry({ photos }: { photos: Photo[] }) {
     return toneOrder.filter((tone) => tones.has(tone));
   }, [photos]);
 
+  useEffect(() => {
+    if (availableTones.length === 0) {
+      setActiveTone(null);
+      return;
+    }
+    if (!activeTone || !availableTones.includes(activeTone)) {
+      setActiveTone(availableTones[0]);
+    }
+  }, [availableTones, activeTone]);
+
   const filteredPhotos = useMemo(() => {
-    if (activeTone === "all") {
+    if (!activeTone) {
       return photos;
     }
     return photos.filter((photo) => getTone(photo) === activeTone);
   }, [activeTone, photos]);
 
-  const labelForTone = (tone: Tone | "all") => (tone === "all" ? "All" : tone.charAt(0).toUpperCase() + tone.slice(1));
+  const labelForTone = (tone: Tone) => tone.charAt(0).toUpperCase() + tone.slice(1);
 
   return (
     <>
@@ -73,16 +83,6 @@ export function PhotographyEntry({ photos }: { photos: Photo[] }) {
 
       <section className="mx-auto mt-40 max-w-[1600px] px-6 pb-24 md:mt-48 md:px-12">
         <div className="mb-10 flex flex-wrap items-center justify-center gap-2 md:mb-14">
-          <button
-            className={`border px-3 py-1 text-[10px] uppercase tracking-[0.24em] transition-colors ${
-              activeTone === "all" ? "border-white/75 text-white" : "border-white/25 text-white/65 hover:border-white/45 hover:text-white/85"
-            }`}
-            onClick={() => setActiveTone("all")}
-            type="button"
-          >
-            {labelForTone("all")}
-          </button>
-
           {availableTones.map((tone) => (
             <button
               className={`border px-3 py-1 text-[10px] uppercase tracking-[0.24em] transition-colors ${
