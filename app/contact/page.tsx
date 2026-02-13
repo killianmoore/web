@@ -35,9 +35,9 @@ export default async function ContactPage() {
         </div>
         <div className="space-y-2">
           <p className={sectionLabelClass}>Socials:</p>
-          <ul className="flex flex-wrap gap-3">
+          <div className="mt-3 flex flex-col gap-2">
             {site.socials.map((social) => (
-              <li key={social.label}>
+              <div key={social.label}>
                 <Link
                   className={`${bioBodyClass} underline underline-offset-4 transition hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white`}
                   href={social.url}
@@ -46,9 +46,9 @@ export default async function ContactPage() {
                 >
                   {social.label}
                 </Link>
-              </li>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       </div>
       <ContactForm />
