@@ -50,7 +50,7 @@ export default async function ContactPage() {
             <a href={getSocialUrl("Foundation")} className="transition hover:text-white" rel="noreferrer" target="_blank">Foundation</a>
           </div>
 
-          <p className="mt-20 text-[13px] text-white/50">
+          <p className="mt-28 text-center text-[15px] text-white/60 sm:text-[16px]">
             Born in Ireland. Made a home in New York City.
           </p>
         </div>
