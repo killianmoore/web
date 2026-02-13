@@ -25,7 +25,7 @@ export default async function ContactPage() {
 
         <div className="mx-auto mt-14 max-w-[600px] text-left">
           <p className="mt-6 text-[18px] leading-[1.85] text-white/80 sm:text-[19px]">
-            If the work resonates, feel free to reach out.
+            Available for commissioned projects, print releases, and select 1/1 digital works.
           </p>
 
           <p className="mt-14 text-[11px] tracking-[0.35em] uppercase text-white/60 underline underline-offset-4 decoration-white/35">
