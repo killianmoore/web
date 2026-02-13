@@ -20,14 +20,14 @@ export default async function ContactPage() {
       <div className="space-y-5">
         <p className={sectionLabelClass}>Contact</p>
         <h1 className="font-serif text-4xl leading-tight text-white sm:text-5xl">Commissions & Collaborations</h1>
-        <p className={bioBodyClass}>
+        <p className="mt-8 text-[17px] leading-[1.9] text-white/70">
           If the work resonates, feel free to reach out.
         </p>
-        <p className={bioBodyClass}>
+        <p className="mt-4 text-[17px] leading-[1.9] text-white/70">
           Available for commissioned projects, print releases, and select digital works.
         </p>
         <div className="mt-10 space-y-3">
-          <p className={sectionLabelClass}>Direct Inquiries</p>
+          <p className="mt-12 text-[11px] tracking-[0.35em] uppercase text-white/50">Direct Inquiries</p>
           <a
             href={`mailto:${EMAIL}`}
             className={`${bioBodyClass} transition hover:text-white`}
@@ -37,18 +37,17 @@ export default async function ContactPage() {
         </div>
         <div className="space-y-2">
           <p className={sectionLabelClass}>Socials</p>
-          <div className="mt-3 flex flex-col gap-2">
+          <div className="mt-14 flex gap-6 text-[15px] text-white/50">
             {socials.map((social) => (
-              <div key={social.label}>
-                <Link
-                  className={`${bioBodyClass} underline underline-offset-4 transition hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white`}
-                  href={social.url}
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  {social.label}
-                </Link>
-              </div>
+              <Link
+                key={social.label}
+                className="transition hover:text-white"
+                href={social.url}
+                rel="noreferrer"
+                target="_blank"
+              >
+                {social.label}
+              </Link>
             ))}
           </div>
         </div>
