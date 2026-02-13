@@ -11,16 +11,28 @@ export function PhotographyEntry({ photos }: { photos: Photo[] }) {
   const getTone = (photo: Photo): Tone | undefined => (photo as Photo & { tone?: Tone }).tone;
   const toneOrder: Tone[] = ["night", "gold", "warm", "cool", "mono"];
   const [activeTone, setActiveTone] = useState<Tone | null>(null);
-  const [currentDesktopHeroSrc, setCurrentDesktopHeroSrc] = useState(photographyDesktopHeroPool[0] ?? "/hero.jpg");
-  const [currentMobileHeroSrc, setCurrentMobileHeroSrc] = useState(photographyMobileHeroPool[0] ?? "/hero.jpg");
+  const [currentHeroSrc, setCurrentHeroSrc] = useState(photographyDesktopHeroPool[0] ?? "/hero.jpg");
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     document.body.classList.remove("route-fade-black");
-    setCurrentDesktopHeroSrc(
-      pickRandomHero(photographyDesktopHeroPool, photographyDesktopHeroPool[0] ?? "/hero.jpg")
-    );
-    void pickFirstLoadableHero(photographyMobileHeroPool, photographyDesktopHeroPool[0] ?? "/hero.jpg")
-      .then((src) => setCurrentMobileHeroSrc(src));
+    const mq = window.matchMedia("(max-width: 639px)");
+    const applyHero = () => {
+      const mobile = mq.matches;
+      setIsMobile(mobile);
+      if (mobile) {
+        void pickFirstLoadableHero(photographyMobileHeroPool, photographyDesktopHeroPool[0] ?? "/hero.jpg")
+          .then((src) => setCurrentHeroSrc(src));
+      } else {
+        setCurrentHeroSrc(
+          pickRandomHero(photographyDesktopHeroPool, photographyDesktopHeroPool[0] ?? "/hero.jpg")
+        );
+      }
+    };
+
+    applyHero();
+    mq.addEventListener("change", applyHero);
+    return () => mq.removeEventListener("change", applyHero);
   }, []);
 
   const availableTones = useMemo(() => {
@@ -56,21 +68,24 @@ export function PhotographyEntry({ photos }: { photos: Photo[] }) {
   return (
     <>
       <section className="relative h-[100dvh] w-full overflow-hidden">
-        <Image
-          alt="Photography entry hero"
-          className="hidden object-cover brightness-[1.05] contrast-[1.02] saturate-[1.03] sm:block"
-          fill
-          onError={() => setCurrentDesktopHeroSrc(photographyDesktopHeroPool[0] ?? "/hero.jpg")}
-          priority
-          sizes="100vw"
-          src={currentDesktopHeroSrc}
-        />
-        <img
-          alt="Photography entry hero mobile"
-          className="absolute inset-0 h-full w-full object-cover brightness-[1.05] contrast-[1.02] saturate-[1.03] sm:hidden"
-          onError={() => setCurrentMobileHeroSrc(photographyDesktopHeroPool[0] ?? "/hero.jpg")}
-          src={currentMobileHeroSrc}
-        />
+        {isMobile ? (
+          <img
+            alt="Photography entry hero mobile"
+            className="absolute inset-0 h-full w-full object-cover brightness-[1.05] contrast-[1.02] saturate-[1.03]"
+            onError={() => setCurrentHeroSrc(photographyMobileHeroPool[0] ?? "/hero.jpg")}
+            src={currentHeroSrc}
+          />
+        ) : (
+          <Image
+            alt="Photography entry hero"
+            className="object-cover brightness-[1.05] contrast-[1.02] saturate-[1.03]"
+            fill
+            onError={() => setCurrentHeroSrc(photographyDesktopHeroPool[0] ?? "/hero.jpg")}
+            priority
+            sizes="100vw"
+            src={currentHeroSrc}
+          />
+        )}
         <div className="absolute inset-0 bg-black/12" />
         <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.38)_0%,rgba(0,0,0,0.04)_34%,rgba(0,0,0,0.04)_68%,rgba(0,0,0,0.30)_100%)]" />
 

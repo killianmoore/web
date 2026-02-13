@@ -7,32 +7,47 @@ import { BrandMark } from "@/components/brand-mark";
 import { homeDesktopHeroPool, homeMobileHeroPool, pickFirstLoadableHero, pickRandomHero } from "@/lib/hero-sync";
 
 export function HomeHero() {
-  const [desktopHeroSrc, setDesktopHeroSrc] = useState(homeDesktopHeroPool[0] ?? "/hero.jpg");
-  const [mobileHeroSrc, setMobileHeroSrc] = useState(homeMobileHeroPool[0] ?? "/hero.jpg");
+  const [heroSrc, setHeroSrc] = useState(homeDesktopHeroPool[0] ?? "/hero.jpg");
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    setDesktopHeroSrc(pickRandomHero(homeDesktopHeroPool, homeDesktopHeroPool[0] ?? "/hero.jpg"));
-    void pickFirstLoadableHero(homeMobileHeroPool, homeDesktopHeroPool[0] ?? "/hero.jpg")
-      .then((src) => setMobileHeroSrc(src));
+    const mq = window.matchMedia("(max-width: 639px)");
+    const applyHero = () => {
+      const mobile = mq.matches;
+      setIsMobile(mobile);
+      if (mobile) {
+        void pickFirstLoadableHero(homeMobileHeroPool, homeDesktopHeroPool[0] ?? "/hero.jpg")
+          .then((src) => setHeroSrc(src));
+      } else {
+        setHeroSrc(pickRandomHero(homeDesktopHeroPool, homeDesktopHeroPool[0] ?? "/hero.jpg"));
+      }
+    };
+
+    applyHero();
+    mq.addEventListener("change", applyHero);
+    return () => mq.removeEventListener("change", applyHero);
   }, []);
 
   return (
     <section className="relative h-[100dvh] w-full overflow-hidden" id="home-hero-root">
-      <Image
-        alt="Cinematic hero photograph by Killian Moore"
-        className="hidden object-cover object-center sm:block"
-        fill
-        onError={() => setDesktopHeroSrc(homeDesktopHeroPool[0] ?? "/hero.jpg")}
-        priority
-        sizes="100vw"
-        src={desktopHeroSrc}
-      />
-      <img
-        alt="Portrait hero photograph by Killian Moore"
-        className="absolute inset-0 h-full w-full object-cover object-center sm:hidden"
-        onError={() => setMobileHeroSrc(homeDesktopHeroPool[0] ?? "/hero.jpg")}
-        src={mobileHeroSrc}
-      />
+      {isMobile ? (
+        <img
+          alt="Portrait hero photograph by Killian Moore"
+          className="absolute inset-0 h-full w-full object-cover object-center"
+          onError={() => setHeroSrc(homeMobileHeroPool[0] ?? "/hero.jpg")}
+          src={heroSrc}
+        />
+      ) : (
+        <Image
+          alt="Cinematic hero photograph by Killian Moore"
+          className="object-cover object-center"
+          fill
+          onError={() => setHeroSrc(homeDesktopHeroPool[0] ?? "/hero.jpg")}
+          priority
+          sizes="100vw"
+          src={heroSrc}
+        />
+      )}
 
       <div className="absolute inset-0 bg-black/20" />
       <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.54)_0%,rgba(0,0,0,0.08)_33%,rgba(0,0,0,0.08)_67%,rgba(0,0,0,0.44)_100%)]" />
