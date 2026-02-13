@@ -25,7 +25,7 @@ export default async function ContactPage() {
           have a chat.
         </p>
         <div className="mt-10 space-y-3">
-          <p className={bioBodyClass}>Direct Inquiries</p>
+          <p className={`${bioBodyClass} underline underline-offset-4`}>Direct Inquiries:</p>
           <a
             href={`mailto:${EMAIL}`}
             className={`${bioBodyClass} transition hover:text-white`}
@@ -34,7 +34,7 @@ export default async function ContactPage() {
           </a>
         </div>
         <div className="space-y-2">
-          <p className={bioBodyClass}>Socials</p>
+          <p className={bioBodyClass}>Socials:</p>
           <ul className="flex flex-wrap gap-3">
             {site.socials.map((social) => (
               <li key={social.label}>
