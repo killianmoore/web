@@ -3,86 +3,518 @@
     "slug": "neon-city",
     "title": "Neon City",
     "year": 2025,
-    "cover": "/photography-web/01-dark-waves.jpg",
+    "cover": "/series-neon-city/Website1.jpg",
     "description": "A study of color and isolation inside midnight architecture.",
     "images": [
       {
-        "src": "/photography-web/01-dark-waves.jpg",
-        "alt": "Dark Waves2",
-        "caption": "Dark Waves2"
+        "src": "/series-neon-city/Website1.jpg",
+        "alt": "Website1",
+        "caption": "Website1"
       },
       {
-        "src": "/photography-web/02-famine.jpg",
-        "alt": "Famine",
-        "caption": "Famine"
+        "src": "/series-neon-city/Website2.jpg",
+        "alt": "Website2",
+        "caption": "Website2"
       },
       {
-        "src": "/photography-web/03-echoes-in-chrome.jpg",
-        "alt": "Echoes In Chrome",
-        "caption": "Echoes In Chrome"
+        "src": "/series-neon-city/Website3.jpg",
+        "alt": "Website3",
+        "caption": "Website3"
       },
       {
-        "src": "/photography-web/04-cine-bridge.jpg",
-        "alt": "Cine Bridge",
-        "caption": "Cine Bridge"
+        "src": "/series-neon-city/Website4.jpg",
+        "alt": "Website4",
+        "caption": "Website4"
       },
       {
-        "src": "/photography-web/05-dark-flower-salt.jpg",
-        "alt": "Dark Flower Salt",
-        "caption": "Dark Flower Salt"
+        "src": "/series-neon-city/Website5.jpg",
+        "alt": "Website5",
+        "caption": "Website5"
       },
       {
-        "src": "/photography-web/06-golden-bridge.jpg",
-        "alt": "Golden Bridge1",
-        "caption": "Golden Bridge1"
-      }
-    ]
-  },
-  {
-    "slug": "desert-quiet",
-    "title": "Desert Quiet",
-    "year": 2024,
-    "cover": "/images/series-desert-quiet/cover.svg",
-    "description": "Long light, patient wind, and objects reduced to their silhouette.",
-    "images": [
-      {
-        "src": "/images/series-desert-quiet/01.svg",
-        "alt": "Early morning dunes under soft amber light",
-        "caption": "Before heat"
+        "src": "/series-neon-city/Website6.jpg",
+        "alt": "Website6",
+        "caption": "Website6"
       },
       {
-        "src": "/images/series-desert-quiet/02.svg",
-        "alt": "Solitary road line disappearing into sand haze",
-        "caption": "Noon line",
-        "exif": {
-          "camera": "Sony A7R V",
-          "lens": "50mm f/1.2",
-          "iso": "200",
-          "shutter": "1/1600s",
-          "aperture": "f/4"
-        }
+        "src": "/series-neon-city/Website7.jpg",
+        "alt": "Website7",
+        "caption": "Website7"
       },
       {
-        "src": "/images/series-desert-quiet/03.svg",
-        "alt": "Shadow of a cactus on a stucco wall",
-        "caption": "Pointer"
+        "src": "/series-neon-city/Website8.jpg",
+        "alt": "Website8",
+        "caption": "Website8"
       },
       {
-        "src": "/images/series-desert-quiet/04.svg",
-        "alt": "Rock formation and cloud break at dusk",
-        "caption": "Burn afterglow"
+        "src": "/series-neon-city/Website9.jpg",
+        "alt": "Website9",
+        "caption": "Website9"
       },
       {
-        "src": "/images/series-desert-quiet/05.svg",
-        "alt": "Night sky over dry salt flat with tiny horizon lights",
-        "caption": "Static stars",
-        "exif": {
-          "camera": "Sony A7R V",
-          "lens": "24mm f/1.4",
-          "iso": "3200",
-          "shutter": "15s",
-          "aperture": "f/1.8"
-        }
+        "src": "/series-neon-city/Website10.jpg",
+        "alt": "Website10",
+        "caption": "Website10"
+      },
+      {
+        "src": "/series-neon-city/Website11.jpg",
+        "alt": "Website11",
+        "caption": "Website11"
+      },
+      {
+        "src": "/series-neon-city/Website12.jpg",
+        "alt": "Website12",
+        "caption": "Website12"
+      },
+      {
+        "src": "/series-neon-city/Website13.jpg",
+        "alt": "Website13",
+        "caption": "Website13"
+      },
+      {
+        "src": "/series-neon-city/Website14.jpg",
+        "alt": "Website14",
+        "caption": "Website14"
+      },
+      {
+        "src": "/series-neon-city/Website15.jpg",
+        "alt": "Website15",
+        "caption": "Website15"
+      },
+      {
+        "src": "/series-neon-city/Website16.jpg",
+        "alt": "Website16",
+        "caption": "Website16"
+      },
+      {
+        "src": "/series-neon-city/Website17.jpg",
+        "alt": "Website17",
+        "caption": "Website17"
+      },
+      {
+        "src": "/series-neon-city/Website18.jpg",
+        "alt": "Website18",
+        "caption": "Website18"
+      },
+      {
+        "src": "/series-neon-city/Website19.jpg",
+        "alt": "Website19",
+        "caption": "Website19"
+      },
+      {
+        "src": "/series-neon-city/Website20.jpg",
+        "alt": "Website20",
+        "caption": "Website20"
+      },
+      {
+        "src": "/series-neon-city/Website21.jpg",
+        "alt": "Website21",
+        "caption": "Website21"
+      },
+      {
+        "src": "/series-neon-city/Website22.jpg",
+        "alt": "Website22",
+        "caption": "Website22"
+      },
+      {
+        "src": "/series-neon-city/Website23.jpg",
+        "alt": "Website23",
+        "caption": "Website23"
+      },
+      {
+        "src": "/series-neon-city/Website24.jpg",
+        "alt": "Website24",
+        "caption": "Website24"
+      },
+      {
+        "src": "/series-neon-city/Website25.jpg",
+        "alt": "Website25",
+        "caption": "Website25"
+      },
+      {
+        "src": "/series-neon-city/Website26.jpg",
+        "alt": "Website26",
+        "caption": "Website26"
+      },
+      {
+        "src": "/series-neon-city/Website27.jpg",
+        "alt": "Website27",
+        "caption": "Website27"
+      },
+      {
+        "src": "/series-neon-city/Website28.jpg",
+        "alt": "Website28",
+        "caption": "Website28"
+      },
+      {
+        "src": "/series-neon-city/Website29.jpg",
+        "alt": "Website29",
+        "caption": "Website29"
+      },
+      {
+        "src": "/series-neon-city/Website30.jpg",
+        "alt": "Website30",
+        "caption": "Website30"
+      },
+      {
+        "src": "/series-neon-city/Website31.jpg",
+        "alt": "Website31",
+        "caption": "Website31"
+      },
+      {
+        "src": "/series-neon-city/Website32.jpg",
+        "alt": "Website32",
+        "caption": "Website32"
+      },
+      {
+        "src": "/series-neon-city/Website33.jpg",
+        "alt": "Website33",
+        "caption": "Website33"
+      },
+      {
+        "src": "/series-neon-city/Website34.jpg",
+        "alt": "Website34",
+        "caption": "Website34"
+      },
+      {
+        "src": "/series-neon-city/Website35.jpg",
+        "alt": "Website35",
+        "caption": "Website35"
+      },
+      {
+        "src": "/series-neon-city/Website36.jpg",
+        "alt": "Website36",
+        "caption": "Website36"
+      },
+      {
+        "src": "/series-neon-city/Website37.jpg",
+        "alt": "Website37",
+        "caption": "Website37"
+      },
+      {
+        "src": "/series-neon-city/Website38.jpg",
+        "alt": "Website38",
+        "caption": "Website38"
+      },
+      {
+        "src": "/series-neon-city/Website39.jpg",
+        "alt": "Website39",
+        "caption": "Website39"
+      },
+      {
+        "src": "/series-neon-city/Website40.jpg",
+        "alt": "Website40",
+        "caption": "Website40"
+      },
+      {
+        "src": "/series-neon-city/Website41.jpg",
+        "alt": "Website41",
+        "caption": "Website41"
+      },
+      {
+        "src": "/series-neon-city/Website42.jpg",
+        "alt": "Website42",
+        "caption": "Website42"
+      },
+      {
+        "src": "/series-neon-city/Website43.jpg",
+        "alt": "Website43",
+        "caption": "Website43"
+      },
+      {
+        "src": "/series-neon-city/Website44.jpg",
+        "alt": "Website44",
+        "caption": "Website44"
+      },
+      {
+        "src": "/series-neon-city/Website45.jpg",
+        "alt": "Website45",
+        "caption": "Website45"
+      },
+      {
+        "src": "/series-neon-city/Website46.jpg",
+        "alt": "Website46",
+        "caption": "Website46"
+      },
+      {
+        "src": "/series-neon-city/Website47.jpg",
+        "alt": "Website47",
+        "caption": "Website47"
+      },
+      {
+        "src": "/series-neon-city/Website48.jpg",
+        "alt": "Website48",
+        "caption": "Website48"
+      },
+      {
+        "src": "/series-neon-city/Website49.jpg",
+        "alt": "Website49",
+        "caption": "Website49"
+      },
+      {
+        "src": "/series-neon-city/Website50.jpg",
+        "alt": "Website50",
+        "caption": "Website50"
+      },
+      {
+        "src": "/series-neon-city/Website51.jpg",
+        "alt": "Website51",
+        "caption": "Website51"
+      },
+      {
+        "src": "/series-neon-city/Website52.jpg",
+        "alt": "Website52",
+        "caption": "Website52"
+      },
+      {
+        "src": "/series-neon-city/Website53.jpg",
+        "alt": "Website53",
+        "caption": "Website53"
+      },
+      {
+        "src": "/series-neon-city/Website54.jpg",
+        "alt": "Website54",
+        "caption": "Website54"
+      },
+      {
+        "src": "/series-neon-city/Website55.jpg",
+        "alt": "Website55",
+        "caption": "Website55"
+      },
+      {
+        "src": "/series-neon-city/Website56.jpg",
+        "alt": "Website56",
+        "caption": "Website56"
+      },
+      {
+        "src": "/series-neon-city/Website57.jpg",
+        "alt": "Website57",
+        "caption": "Website57"
+      },
+      {
+        "src": "/series-neon-city/Website58.jpg",
+        "alt": "Website58",
+        "caption": "Website58"
+      },
+      {
+        "src": "/series-neon-city/Website59.jpg",
+        "alt": "Website59",
+        "caption": "Website59"
+      },
+      {
+        "src": "/series-neon-city/Website60.jpg",
+        "alt": "Website60",
+        "caption": "Website60"
+      },
+      {
+        "src": "/series-neon-city/Website61.jpg",
+        "alt": "Website61",
+        "caption": "Website61"
+      },
+      {
+        "src": "/series-neon-city/Website62.jpg",
+        "alt": "Website62",
+        "caption": "Website62"
+      },
+      {
+        "src": "/series-neon-city/Website63.jpg",
+        "alt": "Website63",
+        "caption": "Website63"
+      },
+      {
+        "src": "/series-neon-city/Website64.jpg",
+        "alt": "Website64",
+        "caption": "Website64"
+      },
+      {
+        "src": "/series-neon-city/Website65.jpg",
+        "alt": "Website65",
+        "caption": "Website65"
+      },
+      {
+        "src": "/series-neon-city/Website66.jpg",
+        "alt": "Website66",
+        "caption": "Website66"
+      },
+      {
+        "src": "/series-neon-city/Website67.jpg",
+        "alt": "Website67",
+        "caption": "Website67"
+      },
+      {
+        "src": "/series-neon-city/Website68.jpg",
+        "alt": "Website68",
+        "caption": "Website68"
+      },
+      {
+        "src": "/series-neon-city/Website69.jpg",
+        "alt": "Website69",
+        "caption": "Website69"
+      },
+      {
+        "src": "/series-neon-city/Website70.jpg",
+        "alt": "Website70",
+        "caption": "Website70"
+      },
+      {
+        "src": "/series-neon-city/Website71.jpg",
+        "alt": "Website71",
+        "caption": "Website71"
+      },
+      {
+        "src": "/series-neon-city/Website72.jpg",
+        "alt": "Website72",
+        "caption": "Website72"
+      },
+      {
+        "src": "/series-neon-city/Website73.jpg",
+        "alt": "Website73",
+        "caption": "Website73"
+      },
+      {
+        "src": "/series-neon-city/Website74.jpg",
+        "alt": "Website74",
+        "caption": "Website74"
+      },
+      {
+        "src": "/series-neon-city/Website75.jpg",
+        "alt": "Website75",
+        "caption": "Website75"
+      },
+      {
+        "src": "/series-neon-city/Website76.jpg",
+        "alt": "Website76",
+        "caption": "Website76"
+      },
+      {
+        "src": "/series-neon-city/Website77.jpg",
+        "alt": "Website77",
+        "caption": "Website77"
+      },
+      {
+        "src": "/series-neon-city/Website78.jpg",
+        "alt": "Website78",
+        "caption": "Website78"
+      },
+      {
+        "src": "/series-neon-city/Website79.jpg",
+        "alt": "Website79",
+        "caption": "Website79"
+      },
+      {
+        "src": "/series-neon-city/Website80.jpg",
+        "alt": "Website80",
+        "caption": "Website80"
+      },
+      {
+        "src": "/series-neon-city/Website81.jpg",
+        "alt": "Website81",
+        "caption": "Website81"
+      },
+      {
+        "src": "/series-neon-city/Website82.jpg",
+        "alt": "Website82",
+        "caption": "Website82"
+      },
+      {
+        "src": "/series-neon-city/Website83.jpg",
+        "alt": "Website83",
+        "caption": "Website83"
+      },
+      {
+        "src": "/series-neon-city/Website84.jpg",
+        "alt": "Website84",
+        "caption": "Website84"
+      },
+      {
+        "src": "/series-neon-city/Website85.jpg",
+        "alt": "Website85",
+        "caption": "Website85"
+      },
+      {
+        "src": "/series-neon-city/Website86.jpg",
+        "alt": "Website86",
+        "caption": "Website86"
+      },
+      {
+        "src": "/series-neon-city/Website87.jpg",
+        "alt": "Website87",
+        "caption": "Website87"
+      },
+      {
+        "src": "/series-neon-city/Website88.jpg",
+        "alt": "Website88",
+        "caption": "Website88"
+      },
+      {
+        "src": "/series-neon-city/Website89.jpg",
+        "alt": "Website89",
+        "caption": "Website89"
+      },
+      {
+        "src": "/series-neon-city/Website90.jpg",
+        "alt": "Website90",
+        "caption": "Website90"
+      },
+      {
+        "src": "/series-neon-city/Website91.jpg",
+        "alt": "Website91",
+        "caption": "Website91"
+      },
+      {
+        "src": "/series-neon-city/Website92.jpg",
+        "alt": "Website92",
+        "caption": "Website92"
+      },
+      {
+        "src": "/series-neon-city/Website93.jpg",
+        "alt": "Website93",
+        "caption": "Website93"
+      },
+      {
+        "src": "/series-neon-city/Website94.jpg",
+        "alt": "Website94",
+        "caption": "Website94"
+      },
+      {
+        "src": "/series-neon-city/Website95.jpg",
+        "alt": "Website95",
+        "caption": "Website95"
+      },
+      {
+        "src": "/series-neon-city/Website96.jpg",
+        "alt": "Website96",
+        "caption": "Website96"
+      },
+      {
+        "src": "/series-neon-city/Website97.jpg",
+        "alt": "Website97",
+        "caption": "Website97"
+      },
+      {
+        "src": "/series-neon-city/Website98.jpg",
+        "alt": "Website98",
+        "caption": "Website98"
+      },
+      {
+        "src": "/series-neon-city/Website99.jpg",
+        "alt": "Website99",
+        "caption": "Website99"
+      },
+      {
+        "src": "/series-neon-city/Website100.jpg",
+        "alt": "Website100",
+        "caption": "Website100"
+      },
+      {
+        "src": "/series-neon-city/Website101.jpg",
+        "alt": "Website101",
+        "caption": "Website101"
+      },
+      {
+        "src": "/series-neon-city/Website102.jpg",
+        "alt": "Website102",
+        "caption": "Website102"
       }
     ]
   }
