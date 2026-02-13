@@ -16,6 +16,8 @@ public/images/series-neon-city/**
 public/images/hero/**
 !public/images/hero/_web/
 !public/images/hero/_web/**
+!public/images/hero/mobile/
+!public/images/hero/mobile/**
 
 # Keep deployment-safe photography assets tracked
 !public/photography-web/
