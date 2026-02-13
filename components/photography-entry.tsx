@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import { SeriesGrid } from "@/components/series-grid";
-import type { Photo, Tone } from "@/lib/content";
+import type { Photo } from "@/lib/content";
 
 const curatedHeroImages = [
   "/images/hero/_web/hero-01.jpg",
@@ -13,6 +13,7 @@ const curatedHeroImages = [
 ];
 
 export function PhotographyEntry({ photos }: { photos: Photo[] }) {
+  type Tone = NonNullable<Photo["tone"]>;
   const toneOrder: Tone[] = ["night", "neon", "gold", "warm", "cool", "mono"];
   const [activeTone, setActiveTone] = useState<"all" | Tone>("all");
 
