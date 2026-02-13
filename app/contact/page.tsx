@@ -24,17 +24,21 @@ export default async function ContactPage() {
         </h1>
 
         <div className="mx-auto mt-14 max-w-[600px] text-left">
+          <p className="text-center text-[18px] leading-[1.85] text-white/80 sm:text-[19px]">
+            If the work resonates, feel free to reach out.
+          </p>
+
           <p className="mt-6 text-[18px] leading-[1.85] text-white/80 sm:text-[19px]">
             Available for commissioned projects, print releases, and select 1/1 digital works.
           </p>
 
-          <p className="mt-14 text-[11px] tracking-[0.35em] uppercase text-white/60 underline underline-offset-4 decoration-white/35">
+          <p className="mt-14 text-center text-[11px] tracking-[0.35em] uppercase text-white/60 underline underline-offset-4 decoration-white/35">
             Direct Inquiries
           </p>
 
           <a
             href={`mailto:${EMAIL}`}
-            className="mt-3 inline-block text-[17px] text-white/90 transition hover:text-white"
+            className="mt-3 block text-center text-[17px] text-white/90 transition hover:text-white"
           >
             {EMAIL}
           </a>
@@ -46,10 +50,11 @@ export default async function ContactPage() {
             <a href={getSocialUrl("Foundation")} className="transition hover:text-white" rel="noreferrer" target="_blank">Foundation</a>
           </div>
 
-          <p className="mt-28 text-center text-[15px] text-white/60 sm:text-[16px]">
-            Born in Ireland. Made a home in New York City.
-          </p>
         </div>
+
+        <p className="pt-8 text-center text-[15px] text-white/60 sm:pt-10 sm:text-[16px]">
+          Born in Ireland. Made a home in New York City.
+        </p>
       </div>
     </div>
   );
