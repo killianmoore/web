@@ -82,10 +82,11 @@ export function PhotographyEntry({ photos }: { photos: Photo[] }) {
           alt="Photography entry hero mobile"
           className="object-cover brightness-[1.05] contrast-[1.02] saturate-[1.03] sm:hidden"
           fill
-          onError={() => setCurrentMobileHeroSrc(mobileHeroPool[0] ?? "/hero.jpg")}
+          onError={() => setCurrentMobileHeroSrc(desktopHeroPool[0] ?? "/hero.jpg")}
           priority
           sizes="100vw"
           src={currentMobileHeroSrc}
+          unoptimized
         />
         <div className="absolute inset-0 bg-black/12" />
         <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.38)_0%,rgba(0,0,0,0.04)_34%,rgba(0,0,0,0.04)_68%,rgba(0,0,0,0.30)_100%)]" />

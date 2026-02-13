@@ -45,10 +45,11 @@ export function HomeHero() {
         alt="Portrait hero photograph by Killian Moore"
         className="object-cover object-center sm:hidden"
         fill
-        onError={() => setMobileHeroSrc(mobileHeroPool[0] ?? "/hero.jpg")}
+        onError={() => setMobileHeroSrc(desktopHeroPool[0] ?? "/hero.jpg")}
         priority
         sizes="100vw"
         src={mobileHeroSrc}
+        unoptimized
       />
 
       <div className="absolute inset-0 bg-black/20" />
