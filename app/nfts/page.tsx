@@ -14,7 +14,10 @@ type MarketLinkRule = {
 
 const marketLinkRules = marketLinkRulesRaw as MarketLinkRule[];
 
-function normalizeValue(value: string): string {
+function normalizeValue(value: unknown): string {
+  if (typeof value !== "string") {
+    return "";
+  }
   return value.trim().toLowerCase();
 }
 
@@ -47,16 +50,27 @@ function resolveMarketUrl(nft: { name: string; contract: string; tokenId: string
 }
 
 export default async function NFTsPage() {
-  const nfts = await getNFTs();
+  let nfts: Awaited<ReturnType<typeof getNFTs>> = [];
+  try {
+    nfts = await getNFTs();
+  } catch (error) {
+    console.error("Failed to load NFTs", error);
+  }
+
   const galleryItems = nfts.map((nft) => {
+    const contract = typeof nft.contract === "string" ? nft.contract : "";
+    const tokenId = typeof nft.tokenId === "string" ? nft.tokenId : "";
+    const name = typeof nft.name === "string" && nft.name.trim() ? nft.name : `Token #${tokenId || "Unknown"}`;
+    const imageUrl = typeof nft.image === "string" ? nft.image : "";
+
     return {
-      contract: nft.contract,
-      tokenId: nft.tokenId,
-      name: nft.name,
-      imageUrl: nft.image,
-      marketUrl: resolveMarketUrl(nft)
+      contract,
+      tokenId,
+      name,
+      imageUrl,
+      marketUrl: resolveMarketUrl({ contract, tokenId, name })
     };
-  });
+  }).filter((item) => item.imageUrl);
 
   return (
     <main className="bg-black text-white">
