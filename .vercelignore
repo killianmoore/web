@@ -4,7 +4,6 @@ node_modules
 .DS_Store
 
 # Exclude large raw photo sources
-public/series-neon-city/**
 public/images/series-neon-city/**
 !public/images/series-neon-city/_web/
 !public/images/series-neon-city/_web/**
