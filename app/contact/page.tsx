@@ -17,6 +17,8 @@ export default async function ContactPage() {
   const socials = socialsOrder
     .map((label) => site.socials.find((social) => social.label === label))
     .filter((social): social is (typeof site.socials)[number] => Boolean(social));
+  const deca = { label: "Deca", url: "https://deca.art/deca" };
+  const contactSocials = [...socials, deca];
 
   return (
     <section className="mx-auto w-[min(94vw,1160px)] py-28">
@@ -41,7 +43,7 @@ export default async function ContactPage() {
         <div className="space-y-2">
           <p className={sectionLabelClass}>Socials</p>
           <div className="mt-14 flex gap-6 text-[15px] text-white/50">
-            {socials.map((social) => (
+            {contactSocials.map((social) => (
               <Link
                 key={social.label}
                 className="transition hover:text-white"
