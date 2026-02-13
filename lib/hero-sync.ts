@@ -65,6 +65,38 @@ export function pickRandomHero(pool: string[], fallback: string): string {
   return pool[Math.floor(Math.random() * pool.length)] ?? fallback;
 }
 
+function shuffle(values: string[]): string[] {
+  const out = [...values];
+  for (let index = out.length - 1; index > 0; index -= 1) {
+    const swapIndex = Math.floor(Math.random() * (index + 1));
+    [out[index], out[swapIndex]] = [out[swapIndex], out[index]];
+  }
+  return out;
+}
+
+export function canLoadImage(src: string): Promise<boolean> {
+  return new Promise((resolve) => {
+    if (typeof window === "undefined") {
+      resolve(false);
+      return;
+    }
+    const image = new window.Image();
+    image.onload = () => resolve(true);
+    image.onerror = () => resolve(false);
+    image.src = src;
+  });
+}
+
+export async function pickFirstLoadableHero(pool: string[], fallback: string): Promise<string> {
+  for (const candidate of shuffle(pool)) {
+    // eslint-disable-next-line no-await-in-loop
+    if (await canLoadImage(candidate)) {
+      return candidate;
+    }
+  }
+  return fallback;
+}
+
 function pickRandom(pool: string[], avoid?: string): string {
   if (pool.length === 0) {
     return "";

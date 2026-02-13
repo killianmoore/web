@@ -4,7 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { BrandMark } from "@/components/brand-mark";
-import { homeDesktopHeroPool, homeMobileHeroPool, pickRandomHero } from "@/lib/hero-sync";
+import { homeDesktopHeroPool, homeMobileHeroPool, pickFirstLoadableHero, pickRandomHero } from "@/lib/hero-sync";
 
 export function HomeHero() {
   const [desktopHeroSrc, setDesktopHeroSrc] = useState(homeDesktopHeroPool[0] ?? "/hero.jpg");
@@ -12,7 +12,8 @@ export function HomeHero() {
 
   useEffect(() => {
     setDesktopHeroSrc(pickRandomHero(homeDesktopHeroPool, homeDesktopHeroPool[0] ?? "/hero.jpg"));
-    setMobileHeroSrc(pickRandomHero(homeMobileHeroPool, homeMobileHeroPool[0] ?? "/hero.jpg"));
+    void pickFirstLoadableHero(homeMobileHeroPool, homeDesktopHeroPool[0] ?? "/hero.jpg")
+      .then((src) => setMobileHeroSrc(src));
   }, []);
 
   return (
@@ -29,7 +30,7 @@ export function HomeHero() {
       <img
         alt="Portrait hero photograph by Killian Moore"
         className="absolute inset-0 h-full w-full object-cover object-center sm:hidden"
-        onError={() => setMobileHeroSrc(homeMobileHeroPool[0] ?? "/hero.jpg")}
+        onError={() => setMobileHeroSrc(homeDesktopHeroPool[0] ?? "/hero.jpg")}
         src={mobileHeroSrc}
       />
 

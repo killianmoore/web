@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import { SeriesGrid } from "@/components/series-grid";
 import type { Photo } from "@/lib/content";
-import { pickRandomHero, photographyDesktopHeroPool, photographyMobileHeroPool } from "@/lib/hero-sync";
+import { pickFirstLoadableHero, pickRandomHero, photographyDesktopHeroPool, photographyMobileHeroPool } from "@/lib/hero-sync";
 
 export function PhotographyEntry({ photos }: { photos: Photo[] }) {
   type Tone = "night" | "gold" | "warm" | "cool" | "mono";
@@ -19,9 +19,8 @@ export function PhotographyEntry({ photos }: { photos: Photo[] }) {
     setCurrentDesktopHeroSrc(
       pickRandomHero(photographyDesktopHeroPool, photographyDesktopHeroPool[0] ?? "/hero.jpg")
     );
-    setCurrentMobileHeroSrc(
-      pickRandomHero(photographyMobileHeroPool, photographyMobileHeroPool[0] ?? "/hero.jpg")
-    );
+    void pickFirstLoadableHero(photographyMobileHeroPool, photographyDesktopHeroPool[0] ?? "/hero.jpg")
+      .then((src) => setCurrentMobileHeroSrc(src));
   }, []);
 
   const availableTones = useMemo(() => {
@@ -69,7 +68,7 @@ export function PhotographyEntry({ photos }: { photos: Photo[] }) {
         <img
           alt="Photography entry hero mobile"
           className="absolute inset-0 h-full w-full object-cover brightness-[1.05] contrast-[1.02] saturate-[1.03] sm:hidden"
-          onError={() => setCurrentMobileHeroSrc(photographyMobileHeroPool[0] ?? "/hero.jpg")}
+          onError={() => setCurrentMobileHeroSrc(photographyDesktopHeroPool[0] ?? "/hero.jpg")}
           src={currentMobileHeroSrc}
         />
         <div className="absolute inset-0 bg-black/12" />
