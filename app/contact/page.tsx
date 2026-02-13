@@ -13,7 +13,10 @@ export default async function ContactPage() {
   const site = await getSiteContent();
   const sectionLabelClass = "text-[11px] tracking-[0.35em] uppercase text-white/50";
   const bioBodyClass = "text-[15px] leading-[1.8] text-white/85 sm:text-[17px] sm:leading-[1.9] lg:text-[18px]";
-  const socials = site.socials.filter((social) => ["Instagram", "Foundation", "SuperRare"].includes(social.label));
+  const socialsOrder = ["X", "Instagram", "SuperRare", "Foundation"] as const;
+  const socials = socialsOrder
+    .map((label) => site.socials.find((social) => social.label === label))
+    .filter((social): social is (typeof site.socials)[number] => Boolean(social));
 
   return (
     <section className="mx-auto w-[min(94vw,1160px)] py-28">
@@ -51,6 +54,9 @@ export default async function ContactPage() {
             ))}
           </div>
         </div>
+        <p className="mt-24 text-[11px] tracking-[0.35em] uppercase text-white/35">
+          Born in Ireland · Made a home in NYC
+        </p>
       </div>
     </section>
   );
