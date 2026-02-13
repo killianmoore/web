@@ -53,6 +53,18 @@ export const HERO_STORAGE_KEYS = {
   photographyMobile: "km:hero:photography:mobile"
 } as const;
 
+export const homeDesktopHeroPool = desktopHeroPool.filter((_, index) => index % 2 === 0);
+export const photographyDesktopHeroPool = desktopHeroPool.filter((_, index) => index % 2 === 1);
+export const homeMobileHeroPool = mobileHeroPool.filter((_, index) => index % 2 === 0);
+export const photographyMobileHeroPool = mobileHeroPool.filter((_, index) => index % 2 === 1);
+
+export function pickRandomHero(pool: string[], fallback: string): string {
+  if (pool.length === 0) {
+    return fallback;
+  }
+  return pool[Math.floor(Math.random() * pool.length)] ?? fallback;
+}
+
 function pickRandom(pool: string[], avoid?: string): string {
   if (pool.length === 0) {
     return "";
@@ -80,5 +92,55 @@ export function pickSyncedHero({
   const otherValue = window.localStorage.getItem(otherKey) ?? undefined;
   const selected = pickRandom(pool, otherValue) || fallback;
   window.localStorage.setItem(selfKey, selected);
+  return selected;
+}
+
+function getImageSize(src: string): Promise<{ width: number; height: number } | null> {
+  return new Promise((resolve) => {
+    if (typeof window === "undefined") {
+      resolve(null);
+      return;
+    }
+
+    const image = new window.Image();
+    image.onload = () => resolve({ width: image.naturalWidth, height: image.naturalHeight });
+    image.onerror = () => resolve(null);
+    image.src = src;
+  });
+}
+
+export async function pickPortraitSyncedHero({
+  selfKey,
+  otherKey,
+  pool,
+  fallback
+}: {
+  selfKey: string;
+  otherKey: string;
+  pool: string[];
+  fallback: string;
+}): Promise<string> {
+  if (typeof window === "undefined") {
+    return fallback;
+  }
+
+  const sized = await Promise.all(
+    pool.map(async (src) => {
+      const size = await getImageSize(src);
+      return { src, size };
+    })
+  );
+
+  const portraitPool = sized
+    .filter(({ size }) => size && size.height >= size.width)
+    .map(({ src }) => src);
+
+  const selected = pickSyncedHero({
+    selfKey,
+    otherKey,
+    pool: portraitPool.length > 0 ? portraitPool : pool,
+    fallback
+  });
+
   return selected;
 }

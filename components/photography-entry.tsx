@@ -4,35 +4,23 @@ import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import { SeriesGrid } from "@/components/series-grid";
 import type { Photo } from "@/lib/content";
-import { HERO_STORAGE_KEYS, desktopHeroPool, mobileHeroPool, pickSyncedHero } from "@/lib/hero-sync";
+import { pickRandomHero, photographyDesktopHeroPool, photographyMobileHeroPool } from "@/lib/hero-sync";
 
 export function PhotographyEntry({ photos }: { photos: Photo[] }) {
   type Tone = "night" | "gold" | "warm" | "cool" | "mono";
   const getTone = (photo: Photo): Tone | undefined => (photo as Photo & { tone?: Tone }).tone;
   const toneOrder: Tone[] = ["night", "gold", "warm", "cool", "mono"];
   const [activeTone, setActiveTone] = useState<Tone | null>(null);
-  const [currentDesktopHeroSrc, setCurrentDesktopHeroSrc] = useState(desktopHeroPool[0] ?? "/hero.jpg");
-  const [currentMobileHeroSrc, setCurrentMobileHeroSrc] = useState(mobileHeroPool[0] ?? "/hero.jpg");
+  const [currentDesktopHeroSrc, setCurrentDesktopHeroSrc] = useState(photographyDesktopHeroPool[0] ?? "/hero.jpg");
+  const [currentMobileHeroSrc, setCurrentMobileHeroSrc] = useState(photographyMobileHeroPool[0] ?? "/hero.jpg");
 
   useEffect(() => {
     document.body.classList.remove("route-fade-black");
-
     setCurrentDesktopHeroSrc(
-      pickSyncedHero({
-        selfKey: HERO_STORAGE_KEYS.photographyDesktop,
-        otherKey: HERO_STORAGE_KEYS.homeDesktop,
-        pool: desktopHeroPool,
-        fallback: desktopHeroPool[0] ?? "/hero.jpg"
-      })
+      pickRandomHero(photographyDesktopHeroPool, photographyDesktopHeroPool[0] ?? "/hero.jpg")
     );
-
     setCurrentMobileHeroSrc(
-      pickSyncedHero({
-        selfKey: HERO_STORAGE_KEYS.photographyMobile,
-        otherKey: HERO_STORAGE_KEYS.homeMobile,
-        pool: mobileHeroPool,
-        fallback: mobileHeroPool[0] ?? "/hero.jpg"
-      })
+      pickRandomHero(photographyMobileHeroPool, photographyMobileHeroPool[0] ?? "/hero.jpg")
     );
   }, []);
 
@@ -73,7 +61,7 @@ export function PhotographyEntry({ photos }: { photos: Photo[] }) {
           alt="Photography entry hero"
           className="hidden object-cover brightness-[1.05] contrast-[1.02] saturate-[1.03] sm:block"
           fill
-          onError={() => setCurrentDesktopHeroSrc(desktopHeroPool[0] ?? "/hero.jpg")}
+          onError={() => setCurrentDesktopHeroSrc(photographyDesktopHeroPool[0] ?? "/hero.jpg")}
           priority
           sizes="100vw"
           src={currentDesktopHeroSrc}
@@ -82,7 +70,7 @@ export function PhotographyEntry({ photos }: { photos: Photo[] }) {
           alt="Photography entry hero mobile"
           className="object-cover brightness-[1.05] contrast-[1.02] saturate-[1.03] sm:hidden"
           fill
-          onError={() => setCurrentMobileHeroSrc(desktopHeroPool[0] ?? "/hero.jpg")}
+          onError={() => setCurrentMobileHeroSrc(photographyMobileHeroPool[0] ?? "/hero.jpg")}
           priority
           sizes="100vw"
           src={currentMobileHeroSrc}

@@ -4,30 +4,15 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { BrandMark } from "@/components/brand-mark";
-import { HERO_STORAGE_KEYS, desktopHeroPool, mobileHeroPool, pickSyncedHero } from "@/lib/hero-sync";
+import { homeDesktopHeroPool, homeMobileHeroPool, pickRandomHero } from "@/lib/hero-sync";
 
 export function HomeHero() {
-  const [desktopHeroSrc, setDesktopHeroSrc] = useState(desktopHeroPool[0] ?? "/hero.jpg");
-  const [mobileHeroSrc, setMobileHeroSrc] = useState(mobileHeroPool[0] ?? "/hero.jpg");
+  const [desktopHeroSrc, setDesktopHeroSrc] = useState(homeDesktopHeroPool[0] ?? "/hero.jpg");
+  const [mobileHeroSrc, setMobileHeroSrc] = useState(homeMobileHeroPool[0] ?? "/hero.jpg");
 
   useEffect(() => {
-    setDesktopHeroSrc(
-      pickSyncedHero({
-        selfKey: HERO_STORAGE_KEYS.homeDesktop,
-        otherKey: HERO_STORAGE_KEYS.photographyDesktop,
-        pool: desktopHeroPool,
-        fallback: desktopHeroPool[0] ?? "/hero.jpg"
-      })
-    );
-
-    setMobileHeroSrc(
-      pickSyncedHero({
-        selfKey: HERO_STORAGE_KEYS.homeMobile,
-        otherKey: HERO_STORAGE_KEYS.photographyMobile,
-        pool: mobileHeroPool,
-        fallback: mobileHeroPool[0] ?? "/hero.jpg"
-      })
-    );
+    setDesktopHeroSrc(pickRandomHero(homeDesktopHeroPool, homeDesktopHeroPool[0] ?? "/hero.jpg"));
+    setMobileHeroSrc(pickRandomHero(homeMobileHeroPool, homeMobileHeroPool[0] ?? "/hero.jpg"));
   }, []);
 
   return (
@@ -36,7 +21,7 @@ export function HomeHero() {
         alt="Cinematic hero photograph by Killian Moore"
         className="hidden object-cover object-center sm:block"
         fill
-        onError={() => setDesktopHeroSrc(desktopHeroPool[0] ?? "/hero.jpg")}
+        onError={() => setDesktopHeroSrc(homeDesktopHeroPool[0] ?? "/hero.jpg")}
         priority
         sizes="100vw"
         src={desktopHeroSrc}
@@ -45,7 +30,7 @@ export function HomeHero() {
         alt="Portrait hero photograph by Killian Moore"
         className="object-cover object-center sm:hidden"
         fill
-        onError={() => setMobileHeroSrc(desktopHeroPool[0] ?? "/hero.jpg")}
+        onError={() => setMobileHeroSrc(homeMobileHeroPool[0] ?? "/hero.jpg")}
         priority
         sizes="100vw"
         src={mobileHeroSrc}
