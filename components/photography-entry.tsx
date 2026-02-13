@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import { SeriesGrid } from "@/components/series-grid";
-import type { Photo } from "@/lib/content";
+import type { Photo, Tone } from "@/lib/content";
 
 const curatedHeroImages = [
   "/images/hero/_web/hero-01.jpg",
@@ -13,6 +13,9 @@ const curatedHeroImages = [
 ];
 
 export function PhotographyEntry({ photos }: { photos: Photo[] }) {
+  const toneOrder: Tone[] = ["night", "neon", "gold", "warm", "cool", "mono"];
+  const [activeTone, setActiveTone] = useState<"all" | Tone>("all");
+
   const heroImage = useMemo(() => {
     if (curatedHeroImages.length === 0) {
       return "/hero.jpg";
@@ -25,6 +28,25 @@ export function PhotographyEntry({ photos }: { photos: Photo[] }) {
   useEffect(() => {
     document.body.classList.remove("route-fade-black");
   }, []);
+
+  const availableTones = useMemo(() => {
+    const tones = new Set<Tone>();
+    photos.forEach((photo) => {
+      if (photo.tone) {
+        tones.add(photo.tone);
+      }
+    });
+    return toneOrder.filter((tone) => tones.has(tone));
+  }, [photos]);
+
+  const filteredPhotos = useMemo(() => {
+    if (activeTone === "all") {
+      return photos;
+    }
+    return photos.filter((photo) => photo.tone === activeTone);
+  }, [activeTone, photos]);
+
+  const labelForTone = (tone: Tone | "all") => (tone === "all" ? "All" : tone.charAt(0).toUpperCase() + tone.slice(1));
 
   return (
     <>
@@ -47,7 +69,32 @@ export function PhotographyEntry({ photos }: { photos: Photo[] }) {
       </section>
 
       <section className="mx-auto mt-40 max-w-[1600px] px-6 pb-24 md:mt-48 md:px-12">
-        <SeriesGrid photos={photos} />
+        <div className="mb-10 flex flex-wrap items-center justify-center gap-2 md:mb-14">
+          <button
+            className={`border px-3 py-1 text-[10px] uppercase tracking-[0.24em] transition-colors ${
+              activeTone === "all" ? "border-white/75 text-white" : "border-white/25 text-white/65 hover:border-white/45 hover:text-white/85"
+            }`}
+            onClick={() => setActiveTone("all")}
+            type="button"
+          >
+            {labelForTone("all")}
+          </button>
+
+          {availableTones.map((tone) => (
+            <button
+              className={`border px-3 py-1 text-[10px] uppercase tracking-[0.24em] transition-colors ${
+                activeTone === tone ? "border-white/75 text-white" : "border-white/25 text-white/65 hover:border-white/45 hover:text-white/85"
+              }`}
+              key={tone}
+              onClick={() => setActiveTone(tone)}
+              type="button"
+            >
+              {labelForTone(tone)}
+            </button>
+          ))}
+        </div>
+
+        <SeriesGrid photos={filteredPhotos} />
       </section>
     </>
   );
