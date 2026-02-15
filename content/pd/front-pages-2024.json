@@ -1,0 +1,296 @@
+{
+  "0": { "label": "Cover", "blocks": [] },
+  "1": {
+    "label": "Memoriam",
+    "blocks": [
+      { "type": "emblem" },
+      { "type": "title", "text": "MEMORIAM" },
+      { "type": "subtitle", "text": "IN MEMORY OF OUR DECEASED MEMBERS" },
+      {
+        "type": "list",
+        "items": [
+          "Johnny Akers",
+          "Patrick Breen",
+          "Patrick Connell",
+          "Michael Coyne",
+          "Sheamus Cullen",
+          "James Dermody",
+          "Michael Donoghue",
+          "John Flanagan",
+          "Matthew Geoghegan",
+          "Patrick Geoghegan",
+          "Brendan Keane",
+          "Mark Kelly"
+        ]
+      }
+    ]
+  },
+  "2": {
+    "label": "Memoriam",
+    "blocks": [
+      { "type": "emblem" },
+      { "type": "title", "text": "MEMORIAM" },
+      { "type": "subtitle", "text": "IN MEMORY OF OUR DECEASED MEMBERS" },
+      {
+        "type": "list",
+        "items": [
+          "Chris Kenny",
+          "Thomas Kerins",
+          "Michael Leahy",
+          "Kernan McGann",
+          "Kevin Minihan",
+          "James Moore",
+          "John Murphy",
+          "Sean Needham",
+          "Pat O'Connor",
+          "Timothy O'Connor",
+          "Patrick O'Sullivan"
+        ]
+      }
+    ]
+  },
+  "3": {
+    "label": "Founding Fathers",
+    "blocks": [
+      { "type": "brand" },
+      { "type": "title", "text": "FOUNDING FATHERS" },
+      {
+        "type": "list",
+        "items": [
+          "Brendan Keane",
+          "Mark Kelly",
+          "Chris Kenny",
+          "Thomas Kerins",
+          "Michael Leahy",
+          "Kernan McGann",
+          "Kevin Minihan",
+          "James Moore",
+          "John Murphy",
+          "Sean Needham",
+          "Pat O'Connor",
+          "Timothy O'Connor",
+          "Patrick O'Sullivan"
+        ]
+      }
+    ]
+  },
+  "4": {
+    "label": "Officers 2024",
+    "blocks": [
+      { "type": "brand" },
+      { "type": "title", "text": "OFFICERS 2024" },
+      {
+        "type": "list",
+        "items": [
+          "President - Michael McCreesh",
+          "Vice-President - Anthony Fallon",
+          "Treasurer - John Scanlon",
+          "Registrar - Patrick Reidy",
+          "Secretary - Shane O'Mahoney"
+        ]
+      }
+    ]
+  },
+  "5": {
+    "label": "Board of Directors",
+    "blocks": [
+      { "type": "brand" },
+      { "type": "title", "text": "BOARD OF DIRECTORS" },
+      { "type": "list", "items": ["Lloyd Fehily", "Paul Motherway", "David Nikaj", "John Keegan"] }
+    ]
+  },
+  "6": {
+    "label": "Trustees",
+    "blocks": [
+      { "type": "brand" },
+      { "type": "title", "text": "TRUSTEES" },
+      {
+        "type": "list",
+        "items": [
+          "Mr. Patrick Macken",
+          "Mr. Barry Riordan",
+          "Mr. Michael Gubbins",
+          "Mr. Robert Knox",
+          "Mr. Declan Moran"
+        ]
+      }
+    ]
+  },
+  "7": {
+    "label": "Appointees",
+    "blocks": [
+      { "type": "brand" },
+      { "type": "title", "text": "APPOINTEES" },
+      {
+        "type": "list",
+        "items": [
+          "Insurance",
+          "Declan Moran",
+          "Patrick Reidy",
+          "PR Team",
+          "Declan McGlynn",
+          "Simon Greenwood"
+        ]
+      }
+    ]
+  },
+  "8": {
+    "label": "Member of the Year",
+    "blocks": [
+      { "type": "brand" },
+      { "type": "title", "text": "MEMBER OF THE YEAR" },
+      { "type": "highlightYear", "text": "2023" },
+      { "type": "highlightName", "text": "Killian Moore" },
+      { "type": "minorTitle", "text": "PAST MEMBERS OF THE YEAR" },
+      {
+        "type": "list",
+        "twoCol": true,
+        "items": [
+          "2022 - John Keegan",
+          "2021 - Michael McCreesh",
+          "2020 - Louis Corbett",
+          "2019 - Anthony Fallon",
+          "2018 - Tim Lane",
+          "2017 - John Hoy",
+          "2016 - Kevin Grady",
+          "2015 - Martin Hurley",
+          "2014 - Seamus Burke",
+          "2013 - Patrick Brady",
+          "2012 - Robert Knox"
+        ]
+      }
+    ]
+  },
+  "9": {
+    "label": "Member of the Year",
+    "blocks": [
+      { "type": "brand" },
+      { "type": "title", "text": "PAST MEMBERS OF THE YEAR" },
+      {
+        "type": "list",
+        "twoCol": true,
+        "items": [
+          "2011 - Garrett Doyle",
+          "2010 - Declan McGlynn",
+          "2009 - William Walsh",
+          "2008 - Gene Kastner",
+          "2007 - Michael Gubbins",
+          "2006 - Brian Moore",
+          "2005 - Marian O'Dwyer",
+          "2004 - John Scully",
+          "2003 - Barry Riordan",
+          "2002 - Declan Moran",
+          "2001 - John Riordan",
+          "2000 - Declan Hennessy",
+          "2000 - Tom Riordan",
+          "1999 - Patrick Geoghegan",
+          "1999 - Michael Leahy",
+          "1999 - John Marren"
+        ]
+      }
+    ]
+  },
+  "10": {
+    "label": "Grand Marshal",
+    "blocks": [
+      { "type": "brand" },
+      { "type": "title", "text": "GRAND MARSHAL OF EMERALD GUILD" },
+      { "type": "highlightYear", "text": "2024 - Brendan Harte" },
+      { "type": "minorTitle", "text": "PREVIOUS GRAND MARSHALS" },
+      {
+        "type": "list",
+        "twoCol": true,
+        "items": [
+          "2023 - Killian Moore",
+          "2022 - Paul Motherway",
+          "2021 - No Parade",
+          "2020 - No Parade",
+          "2019 - Louis Corbet",
+          "2018 - Declan Moran",
+          "2017 - Joseph Daggett",
+          "2016 - Declan McGlynn",
+          "2015 - Michael Gubbins",
+          "2014 - Declan Hennessy",
+          "2013 - Barry Riordan",
+          "2012 - Garrett Doyle",
+          "2011 - Marian O'Dwyer",
+          "2010 - Mike Prunty",
+          "2009 - John O'Mahony",
+          "2008 - Patrick Macken",
+          "2007 - Michael Leahy"
+        ]
+      }
+    ]
+  },
+  "11": {
+    "label": "Past Presidents",
+    "blocks": [
+      { "type": "brand" },
+      { "type": "title", "text": "PAST PRESIDENTS" },
+      {
+        "type": "list",
+        "items": [
+          "1992-1997 - Steering Committee Founding Fathers",
+          "1998-2001 - Mr. Shane Humphries",
+          "2002-2003 - Mr. Sean McKivergan",
+          "2004-2005 - Mr. Declan Hennessy",
+          "2006-2007 - Mr. Barry Riordan",
+          "2008-2009 - Mr. Garrett Doyle",
+          "2010-2011 - Mr. Seamus Burke",
+          "2012-2013 - Mr. Michael Gubbins",
+          "2014-2015 - Mr. Michael O Reilly",
+          "2016-2017 - Mr. Robert Knox",
+          "2018-2019 - Mr. Joe Dagget",
+          "2020-2021 - Mr. Declan Moran"
+        ]
+      }
+    ]
+  },
+  "12": {
+    "label": "Honorary Life Members",
+    "blocks": [
+      { "type": "brand" },
+      { "type": "title", "text": "HONORARY LIFE MEMBERS" },
+      {
+        "type": "list",
+        "items": [
+          "Joseph Kissane - Member since 1992",
+          "William Mannion - Member since 1992",
+          "Michael Prunty - Member since 1992",
+          "John Marren - Member since 1992",
+          "James Molyneux - Member since 1992",
+          "John Needham - Member since 1996",
+          "Patrick O'Sullivan - Member since 1995",
+          "Pat O'Connor - Member since 1992"
+        ]
+      }
+    ]
+  },
+  "13": {
+    "label": "Distinguished Members",
+    "blocks": [
+      { "type": "brand" },
+      { "type": "title", "text": "DISTINGUISHED MEMBERS" },
+      {
+        "type": "list",
+        "items": [
+          "2022 - John O'Mahony",
+          "2022 - Brendan Harte",
+          "2022 - Michael Cosgrove",
+          "2022 - Martin Howley",
+          "2023 - John Grady",
+          "2023 - Eamonn O'Regan",
+          "2023 - James Purcell"
+        ]
+      }
+    ]
+  },
+  "14": {
+    "label": "Friends & Supporters",
+    "blocks": [
+      { "type": "brand" },
+      { "type": "title", "text": "FRIENDS & SUPPORTERS OF THE GUILD" },
+      { "type": "list", "items": ["Patrick & Mary Hurley"] }
+    ]
+  }
+}

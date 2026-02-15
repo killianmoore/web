@@ -7,9 +7,16 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "cap:add:ios": "npx cap add ios",
+    "cap:sync": "npx cap sync ios",
+    "cap:sync:auto": "node scripts/pd-cap-sync-ios.mjs",
+    "cap:open:ios": "npx cap open ios"
   },
   "dependencies": {
+    "@capacitor/cli": "^8.1.0",
+    "@capacitor/core": "^8.1.0",
+    "@capacitor/ios": "^8.1.0",
     "alchemy-sdk": "^3.6.5",
     "framer-motion": "^11.11.17",
     "next": "^14.2.0",
