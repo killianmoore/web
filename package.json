@@ -5,9 +5,13 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:pd": "next build --no-lint",
     "start": "next start",
     "lint": "next lint",
+    "lint:pd": "eslint app/pd-lab components/pd-*.tsx lib/pd-*.ts --ext .ts,.tsx",
     "typecheck": "tsc --noEmit",
+    "typecheck:pd": "tsc -p tsconfig.pd.json --noEmit",
+    "verify:pd": "npm run lint:pd && npm run typecheck:pd && npm run build:pd",
     "cap:add:ios": "npx cap add ios",
     "cap:sync": "npx cap sync ios",
     "cap:sync:auto": "node scripts/pd-cap-sync-ios.mjs",

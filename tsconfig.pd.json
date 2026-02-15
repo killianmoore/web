@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true
+  },
+  "include": [
+    "next-env.d.ts",
+    "app/pd-lab/**/*.ts",
+    "app/pd-lab/**/*.tsx",
+    "components/pd-*.ts",
+    "components/pd-*.tsx",
+    "lib/pd-*.ts",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": ["node_modules"]
+}

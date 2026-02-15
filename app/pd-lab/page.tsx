@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { Uncial_Antiqua } from "next/font/google";
 import { PDFavoritesPanel } from "@/components/pd-favorites-panel";
-import { PDExportButton } from "@/components/pd-export-button";
 import { PDLabBodyGuard } from "@/components/pd-lab-body-guard";
 import { PDModeToggle } from "@/components/pd-mode-toggle";
 import { PDMembersResults } from "@/components/pd-members-results";
@@ -143,7 +142,6 @@ export default function PocketDirectoryLabPage({ searchParams }: Props) {
           vendorsHref={vendorsHref}
           favoritesHref={favoritesHref}
         />
-        <PDExportButton accessKey={providedKey ?? ""} />
 
         <header className="pd-header">
           <p className="pd-brand">EMERALD GUILD SOCIETY</p>
@@ -159,9 +157,6 @@ export default function PocketDirectoryLabPage({ searchParams }: Props) {
                 : "FAVORITES"}
             </h1>
           )}
-          {lastUpdatedAt ? (
-            <p className="pd-data-freshness">Last updated {formatUpdatedAt(lastUpdatedAt)}</p>
-          ) : null}
         </header>
 
         {mode !== "front" && mode !== "favorites" ? (
@@ -203,6 +198,16 @@ export default function PocketDirectoryLabPage({ searchParams }: Props) {
             <div className="pd-filter-actions">
               <button type="submit">Apply</button>
               <a href={clearHref}>Clear</a>
+              {lastUpdatedAt ? (
+                <p className="pd-data-freshness" aria-live="polite">
+                  <span className="pd-data-freshness-full">
+                    Updated {formatUpdatedAt(lastUpdatedAt)}
+                  </span>
+                  <span className="pd-data-freshness-compact">
+                    Upd {formatUpdatedAtCompact(lastUpdatedAt)}
+                  </span>
+                </p>
+              ) : null}
             </div>
           </form>
         ) : null}
@@ -276,6 +281,17 @@ function formatUpdatedAt(value: string): string {
     month: "short",
     day: "numeric",
     year: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+  }).format(date);
+}
+
+function formatUpdatedAtCompact(value: string): string {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return "unknown";
+  return new Intl.DateTimeFormat("en-US", {
+    month: "numeric",
+    day: "numeric",
     hour: "numeric",
     minute: "2-digit",
   }).format(date);
