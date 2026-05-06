@@ -175,6 +175,26 @@ PD_REQUIRE_EXTERNAL=1 PD_LAB_KEY=your_shared_key npm run test:pd:workflow
 3. Collect issues for 24-48 hours
 4. Patch critical issues only
 
+## Android Internal Testing
+Use Google Play Console for Android testers:
+
+```text
+https://play.google.com/console
+```
+
+Add Android testers:
+- Open Google Play Console
+- Select `Emerald Guild Pocket Directory`
+- Go to `Test and release` -> `Testing` -> `Internal testing`
+- Open the `Testers` tab
+- Edit the `OG Beta` email list
+- Type the tester's Google email address
+- Press `Enter` so the email moves into `Email addresses added`
+- Click `Save changes`
+- Send the tester the internal testing opt-in link
+
+Tester note: the tester must open the opt-in link while signed into the same Google account that was added to the list.
+
 ## Rollback Plan
 - If build regression appears:
   - Stop adding testers to new build
