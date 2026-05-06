@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { BrandMark } from "@/components/brand-mark";
 import {
@@ -15,6 +15,7 @@ import {
 export function HomeHero() {
   const [heroSrc, setHeroSrc] = useState(homeDesktopHeroPool[0] ?? "/hero.jpg");
   const [isMobile, setIsMobile] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
     const mq = window.matchMedia("(max-width: 1024px)");
@@ -30,30 +31,26 @@ export function HomeHero() {
     };
 
     applyHero();
-    mq.addEventListener("change", applyHero);
-    return () => mq.removeEventListener("change", applyHero);
+    if (typeof mq.addEventListener === "function") {
+      mq.addEventListener("change", applyHero);
+      return () => mq.removeEventListener("change", applyHero);
+    }
+
+    mq.addListener(applyHero);
+    return () => mq.removeListener(applyHero);
   }, []);
 
   return (
     <section className="relative h-[100dvh] w-full overflow-hidden" id="home-hero-root">
-      {isMobile ? (
-        <img
-          alt="Portrait hero photograph by Killian Moore"
-          className="absolute inset-0 h-full w-full object-cover object-center"
-          onError={() => setHeroSrc(homeMobileHeroPool[0] ?? "/hero.jpg")}
-          src={heroSrc}
-        />
-      ) : (
-        <Image
-          alt="Cinematic hero photograph by Killian Moore"
-          className="object-cover object-center"
-          fill
-          onError={() => setHeroSrc(homeDesktopHeroPool[0] ?? "/hero.jpg")}
-          priority
-          sizes="100vw"
-          src={heroSrc}
-        />
-      )}
+      <Image
+        alt={isMobile ? "Portrait hero photograph by Killian Moore" : "Cinematic hero photograph by Killian Moore"}
+        className="object-cover object-center"
+        fill
+        onError={() => setHeroSrc(isMobile ? (homeMobileHeroPool[0] ?? "/hero.jpg") : (homeDesktopHeroPool[0] ?? "/hero.jpg"))}
+        priority
+        sizes="100vw"
+        src={heroSrc}
+      />
 
       <div className="absolute inset-0 bg-black/20" />
       <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.54)_0%,rgba(0,0,0,0.08)_33%,rgba(0,0,0,0.08)_67%,rgba(0,0,0,0.44)_100%)]" />
@@ -61,8 +58,12 @@ export function HomeHero() {
       <div className="absolute left-1/2 top-[76%] w-[min(76vw,430px)] -translate-x-1/2 -translate-y-1/2 sm:left-[63.5%] sm:top-[55%] sm:w-[min(35vw,460px)] sm:-translate-x-[51.5%]">
         <motion.div
           animate={{ opacity: 1 }}
-          initial={{ opacity: 0 }}
-          transition={{ duration: 0.95, ease: [0.22, 1, 0.36, 1] }}
+          initial={{ opacity: shouldReduceMotion ? 1 : 0 }}
+          transition={
+            shouldReduceMotion
+              ? { duration: 0 }
+              : { duration: 0.95, ease: [0.22, 1, 0.36, 1] }
+          }
         >
           <BrandMark priority />
         </motion.div>
