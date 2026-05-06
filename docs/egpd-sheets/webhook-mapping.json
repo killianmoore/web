@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "events": {
+    "application.submitted": {
+      "targetSheet": "Intake_Raw",
+      "columns": {
+        "ingested_at_utc": "@ingestedAt",
+        "event_type": "type",
+        "submission_id": "submissionId",
+        "application_id": "applicationId",
+        "submitted_at": "submittedAt",
+        "year": "@year",
+        "applicant_name": "applicant.name",
+        "applicant_email": "applicant.email",
+        "project_name": "project.name",
+        "amount_requested": "budget.amountRequested",
+        "stage": "stage",
+        "payload_json": "@payloadJson"
+      }
+    },
+    "committee.action": {
+      "targetSheet": "Committee_Actions_Raw",
+      "columns": {
+        "action_ts": "actionTs",
+        "application_id": "applicationId",
+        "action_type": "actionType",
+        "committee_status": "committeeStatus",
+        "committee_member": "committeeMember",
+        "score": "score",
+        "notes": "notes",
+        "year": "@year",
+        "payload_json": "@payloadJson"
+      }
+    }
+  }
+}

@@ -51,6 +51,30 @@ npm run cap:open:ios
 - `Product` -> `Archive`
 - Use Organizer -> `Distribute App` -> `App Store Connect` -> `Upload`
 
+## Automated Workflow Test
+- Start the app locally (or point to deployed env):
+```bash
+npm run dev
+```
+- In another terminal, run the end-to-end workflow smoke test:
+```bash
+PD_LAB_KEY=your_shared_key npm run test:pd:workflow
+```
+- Optional full-route checks for application and committee portals:
+```bash
+PD_LAB_KEY=your_shared_key \
+PD_TEST_BASE_URL=https://your-domain.com \
+PD_APPLICATION_URL=https://your-domain.com/application \
+PD_APPLICATION_EXPECT_TEXT=\"Apply\" \
+PD_COMMITTEE_URL=https://your-domain.com/committee \
+PD_COMMITTEE_EXPECT_TEXT=\"Committee\" \
+npm run test:pd:workflow
+```
+- Optional strict mode (fails if external portal URLs are missing):
+```bash
+PD_REQUIRE_EXTERNAL=1 PD_LAB_KEY=your_shared_key npm run test:pd:workflow
+```
+
 ## Go/No-Go QA Checklist
 - App opens to Pocket Directory route (not blank)
 - `COVER`, `MEMBERS`, `VENDORS`, `FAVORITES` tabs work

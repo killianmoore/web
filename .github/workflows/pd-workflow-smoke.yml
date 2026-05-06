@@ -1,0 +1,126 @@
+name: PD Workflow Smoke
+
+on:
+  push:
+  deployment_status:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pd-workflow-smoke-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  push-smoke:
+    name: Push Smoke (local app)
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'push' }}
+    timeout-minutes: 20
+    env:
+      PD_LAB_KEY: ${{ secrets.PD_LAB_KEY }}
+      PD_REQUIRE_EXTERNAL: ${{ vars.PD_REQUIRE_EXTERNAL || '0' }}
+      PD_APPLICATION_URL: ${{ vars.PD_APPLICATION_URL }}
+      PD_APPLICATION_EXPECT_TEXT: ${{ vars.PD_APPLICATION_EXPECT_TEXT }}
+      PD_COMMITTEE_URL: ${{ vars.PD_COMMITTEE_URL }}
+      PD_COMMITTEE_EXPECT_TEXT: ${{ vars.PD_COMMITTEE_EXPECT_TEXT }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Ensure PD_LAB_KEY is configured
+        run: |
+          if [ -z "$PD_LAB_KEY" ]; then
+            echo "Missing required secret: PD_LAB_KEY"
+            exit 1
+          fi
+
+      - name: Build app
+        run: npm run build
+
+      - name: Start app
+        run: |
+          npm run start -- --hostname 127.0.0.1 --port 3000 > /tmp/pd-app.log 2>&1 &
+          echo $! > /tmp/pd-app.pid
+
+      - name: Wait for app readiness
+        run: |
+          for i in $(seq 1 90); do
+            if curl -fsS http://127.0.0.1:3000 > /dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+
+          echo "App failed to become ready"
+          cat /tmp/pd-app.log || true
+          exit 1
+
+      - name: Run PD workflow smoke test
+        env:
+          PD_TEST_BASE_URL: http://127.0.0.1:3000
+        run: npm run test:pd:workflow
+
+      - name: Upload app logs on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pd-app-log-push
+          path: /tmp/pd-app.log
+
+      - name: Stop app
+        if: always()
+        run: |
+          if [ -f /tmp/pd-app.pid ]; then
+            kill "$(cat /tmp/pd-app.pid)" || true
+          fi
+
+  deploy-smoke:
+    name: Deploy Smoke (live URL)
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success' && github.event.deployment_status.target_url != '' }}
+    timeout-minutes: 15
+    env:
+      PD_LAB_KEY: ${{ secrets.PD_LAB_KEY }}
+      PD_TEST_BASE_URL: ${{ github.event.deployment_status.target_url }}
+      PD_REQUIRE_EXTERNAL: ${{ vars.PD_REQUIRE_EXTERNAL || '0' }}
+      PD_APPLICATION_URL: ${{ vars.PD_APPLICATION_URL }}
+      PD_APPLICATION_EXPECT_TEXT: ${{ vars.PD_APPLICATION_EXPECT_TEXT }}
+      PD_COMMITTEE_URL: ${{ vars.PD_COMMITTEE_URL }}
+      PD_COMMITTEE_EXPECT_TEXT: ${{ vars.PD_COMMITTEE_EXPECT_TEXT }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Ensure required env is configured
+        run: |
+          if [ -z "$PD_LAB_KEY" ]; then
+            echo "Missing required secret: PD_LAB_KEY"
+            exit 1
+          fi
+          if [ -z "$PD_TEST_BASE_URL" ]; then
+            echo "Missing deployment target URL"
+            exit 1
+          fi
+
+      - name: Run PD workflow smoke test against deployment
+        run: npm run test:pd:workflow
